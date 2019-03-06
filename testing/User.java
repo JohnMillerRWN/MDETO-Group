@@ -6,7 +6,8 @@ public class User {
 	private String last_name;
 	private String full_name;
 	private boolean is_project_manager;
-	
+	private String company;
+
 	public User() {
 		setUser_name("test");
 		first_name = "First";
@@ -14,7 +15,7 @@ public class User {
 		full_name = last_name + ", " + first_name;
 		is_project_manager = false;
 	}
-	
+
 	public User(String uname, String fname, String lname, boolean pm) {
 		setUser_name(uname);
 		first_name = fname;
@@ -22,7 +23,7 @@ public class User {
 		full_name = last_name + ", " + first_name;
 		is_project_manager = pm;
 	}
-	
+
 	public String getUser_name() {
 		return user_name;
 	}
@@ -55,11 +56,19 @@ public class User {
 		this.full_name = full_name;
 	}
 
-	public boolean isIs_project_manager() {
+	public boolean is_project_manager() {
 		return is_project_manager;
 	}
 
-	public void setIs_project_manager(boolean is_project_manager) {
+	public void set_project_manager(boolean is_project_manager) {
 		this.is_project_manager = is_project_manager;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
 	}
 }
