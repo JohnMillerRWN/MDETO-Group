@@ -81,7 +81,7 @@
         </ScrollPane>
         <AnchorPane>
           <children>
-            <Label fx:id="details_label" alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+            <Label fx:id="details_Label" alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
           </children>
         </AnchorPane>
       </items>

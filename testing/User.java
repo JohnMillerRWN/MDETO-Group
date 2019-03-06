@@ -9,19 +9,20 @@ public class User {
 	private String company;
 
 	public User() {
-		setUser_name("test");
-		first_name = "First";
-		last_name = "Last";
-		full_name = last_name + ", " + first_name;
-		is_project_manager = false;
+		setUser_name("");
+		first_name = "";
+		last_name = "";
+		full_name = "";
+		company = "";
 	}
 
 	public User(String uname, String fname, String lname, boolean pm) {
 		setUser_name(uname);
 		first_name = fname;
 		last_name = lname;
-		full_name = last_name + ", " + first_name;
+		full_name =  first_name + " " + last_name;
 		is_project_manager = pm;
+		company = "";
 	}
 
 	public String getUser_name() {

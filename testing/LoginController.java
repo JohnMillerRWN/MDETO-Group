@@ -24,34 +24,33 @@ public class LoginController implements Initializable {
 
 	@FXML
 	private void handleButtonAction(ActionEvent event) throws IOException {
-		Parent home_page_parent = FXMLLoader.load(getClass().getResource("Homepage.fxml"));
+		if(validCredentials()) {
+			//System.out.println("accepted");
+			Parent home_page_parent = FXMLLoader.load(getClass().getResource("Homepage.fxml"));
 
-		Scene home_page_scene = new Scene(home_page_parent);
-		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-		if(validateCredentials()) {
-			System.out.println("accepted");
+			Scene home_page_scene = new Scene(home_page_parent);
+			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			
 			app_stage.hide();
 			app_stage.setScene(home_page_scene);
 			app_stage.show();
 		}
 		else {
-			System.out.println("rejected");
+			//System.out.println("rejected");
 			username_box.clear();
 			invalid_label.setText("Sorry, invalid credentials"); 
 		}
 
 	}
 
-	private boolean validateCredentials() {
+	private boolean validCredentials() {
 		ArrayList<User> userList = new ArrayList<User>();
 		userList.add( new User("estimator", "Estimator", "", false) );
 		userList.add( new User("pm", "Project", "Manager", true) );
 
 		for(User user: userList) {
 			if(user.getUser_name().contentEquals(username_box.getText())) {
-				main.current_user = user;
-				System.out.println(user.getFull_name());
+				Main.shared.setUser(user);
 				return true;
 			}
 		}
