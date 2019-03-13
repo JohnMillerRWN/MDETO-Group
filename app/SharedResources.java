@@ -1,4 +1,4 @@
-package testing;
+package app;
 
 public class SharedResources {
 	
