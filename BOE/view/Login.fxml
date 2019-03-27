@@ -9,12 +9,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.LoginController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.LoginController">
    <children>
       <AnchorPane prefHeight="401.0" prefWidth="600.0">
          <children>
             <Button fx:id="login_button" layoutX="355.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Sign in" />
-            <TextField fx:id="username_box" layoutX="259.0" layoutY="188.0" />
+            <TextField fx:id="username_box" layoutX="259.0" layoutY="188.0" onAction="#handleButtonAction" />
             <Text layoutX="193.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
             <Text layoutX="193.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
                <font>

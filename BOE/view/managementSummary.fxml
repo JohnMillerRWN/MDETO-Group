@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="603.0">
+         <children>
+            <TreeTableView layoutY="6.0" prefHeight="235.0" prefWidth="588.0">
+              <columns>
+                <TreeTableColumn prefWidth="82.0" text="WBS" />
+                <TreeTableColumn prefWidth="113.0" text="C2" />
+              </columns>
+            </TreeTableView>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

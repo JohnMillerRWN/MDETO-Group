@@ -1,4 +1,4 @@
-package app;
+package BOE;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,14 +8,15 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	protected static SharedResources shared = new SharedResources();
+	public static SharedResources shared = new SharedResources();
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("view\\Login.fxml"));
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("BOE Tool");
 
 		stage.show();
 	}

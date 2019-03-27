@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="32.0" layoutY="186.0" prefHeight="200.0" prefWidth="533.0">
+        <columns>
+          <TableColumn prefWidth="339.0" text="Product" />
+          <TableColumn minWidth="2.0" prefWidth="193.0" text="Current Hours" />
+        </columns>
+      </TableView>
+      <TextField layoutX="32.0" layoutY="28.0" promptText="Pro" text="Project Name" />
+      <TextField layoutX="412.0" layoutY="28.0" text="PM Name" />
+      <TextField layoutX="210.0" layoutY="28.0" promptText="Prop Number" />
+      <Label layoutX="32.0" layoutY="63.0" text="PoP" />
+      <DatePicker layoutX="412.0" layoutY="59.0" promptText="End Date" />
+      <DatePicker layoutX="210.0" layoutY="59.0" promptText="Start Date" />
+      <ComboBox layoutX="32.0" layoutY="99.0" prefWidth="150.0" promptText="Default Rate Pool" />
+      <ComboBox layoutX="210.0" layoutY="99.0" prefWidth="150.0" promptText="Default Spread" />
+      <ComboBox layoutX="32.0" layoutY="149.0" prefWidth="150.0" promptText="Product" />
+      <Button layoutX="210.0" layoutY="149.0" mnemonicParsing="false" text="Add Product" />
+      <ButtonBar layoutX="345.0" layoutY="386.0" prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+          <Button mnemonicParsing="false" text="Save" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>

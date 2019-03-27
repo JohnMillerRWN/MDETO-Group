@@ -1,4 +1,4 @@
-package app;
+package BOE;
 
 public class User {
 	private String user_name;

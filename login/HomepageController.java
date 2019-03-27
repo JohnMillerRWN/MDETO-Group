@@ -1,8 +1,10 @@
-package app;
+package login;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import BOE.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,7 +28,7 @@ public class HomepageController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		details_Label.setText( Main.shared.getUser().getFull_name() );
+		//details_Label.setText( Main.shared.getUser().getFull_name() );
 	}
 
 }

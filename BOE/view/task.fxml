@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="652.0" prefWidth="598.0">
+         <children>
+            <DatePicker layoutX="168.0" layoutY="139.0" />
+            <DatePicker layoutX="388.0" layoutY="139.0" />
+            <Label layoutX="50.0" layoutY="34.0" text="Label" />
+            <Label layoutX="50.0" layoutY="64.0" text="Label" />
+            <Label layoutX="50.0" layoutY="101.0" text="Label" />
+            <Label layoutX="50.0" layoutY="134.0" text="Label" />
+            <Label layoutX="111.0" layoutY="612.0" text="Label" />
+            <TextField layoutX="168.0" layoutY="30.0" />
+            <ComboBox layoutX="168.0" layoutY="60.0" prefWidth="150.0" />
+            <ComboBox layoutX="168.0" layoutY="97.0" prefWidth="150.0" />
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

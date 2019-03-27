@@ -1,8 +1,11 @@
-package app;
+package BOE.view;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+
+import BOE.Main;
+import BOE.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +29,7 @@ public class LoginController implements Initializable {
 	private void handleButtonAction(ActionEvent event) throws IOException {
 		if(validCredentials()) {
 			//System.out.println("accepted");
-			Parent home_page_parent = FXMLLoader.load(getClass().getResource("Homepage.fxml"));
+			Parent home_page_parent = FXMLLoader.load(getClass().getResource("projectOverview.fxml"));
 
 			Scene home_page_scene = new Scene(home_page_parent);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
