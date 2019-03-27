@@ -32,8 +32,8 @@ public class projectOverviewController {
         
     @FXML
     private void initialize() {
-    	//user_Label.setText( BOE.Main.shared.getUser().getFull_name() );
-    	//user_Label.setAlignment( Pos.CENTER_RIGHT );
+    	user_Label.setText( BOE.Main.shared.getUser().getFull_name() );
+    	user_Label.setAlignment( Pos.CENTER_RIGHT );
     	
     }
     
