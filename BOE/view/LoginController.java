@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 
+	private projectOverviewController controller;
+
 	@FXML
 	private Label invalid_label;
 
@@ -28,6 +30,7 @@ public class LoginController implements Initializable {
 	@FXML
 	private void handleButtonAction(ActionEvent event) throws IOException {
 		if(validCredentials()) {
+			
 			//System.out.println("accepted");
 			Parent home_page_parent = FXMLLoader.load(getClass().getResource("projectOverview.fxml"));
 
@@ -60,7 +63,7 @@ public class LoginController implements Initializable {
 
 		return false;
 	}
-
+	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO
