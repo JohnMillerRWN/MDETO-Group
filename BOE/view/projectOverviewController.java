@@ -41,7 +41,7 @@ public class projectOverviewController {
 		FXMLLoader loader = new FXMLLoader();
 		System.out.print("Project Summary Window : ");
 		System.out.println(loader);
-		loader.setLocation( boe_tool.class.getResource("view\\pmMenu.fxml") );
+		loader.setLocation( boe_tool.class.getResource("view/pmMenu.fxml") );
 		AnchorPane rootLayout = null;
 		try {
 			rootLayout = (AnchorPane) loader.load();
@@ -57,7 +57,7 @@ public class projectOverviewController {
 		FXMLLoader loader = new FXMLLoader();
 		System.out.print("Summary Window : ");
 		System.out.println(loader);
-		loader.setLocation( boe_tool.class.getResource("view\\pmMenu.fxml") );
+		loader.setLocation( boe_tool.class.getResource("view/pmMenu.fxml") );
 		AnchorPane rootLayout = null;
 		try {
 			rootLayout = (AnchorPane) loader.load();
@@ -72,7 +72,7 @@ public class projectOverviewController {
 		FXMLLoader loader = new FXMLLoader();
 		System.out.print("Management Summary Window : ");
 		System.out.println(loader);
-		loader.setLocation( boe_tool.class.getResource("view\\managementSummary.fxml") );
+		loader.setLocation( boe_tool.class.getResource("view/managementSummary.fxml") );
 		AnchorPane rootLayout = null;
 		try {
 			rootLayout = (AnchorPane) loader.load();
@@ -87,7 +87,7 @@ public class projectOverviewController {
 		FXMLLoader loader = new FXMLLoader();
 		System.out.print("SPY Window : ");
 		System.out.println(loader);
-		loader.setLocation( boe_tool.class.getResource("view\\productSummary.fxml") );
+		loader.setLocation( boe_tool.class.getResource("view/productSummary.fxml") );
 		AnchorPane rootLayout = null;
 		try {
 			rootLayout = (AnchorPane) loader.load();
@@ -102,7 +102,7 @@ public class projectOverviewController {
 		FXMLLoader loader = new FXMLLoader();
 		System.out.print("SDRL Window : ");
 		System.out.println(loader);
-		loader.setLocation( boe_tool.class.getResource("view\\SDRLControl.fxml") );
+		loader.setLocation( boe_tool.class.getResource("view/SDRLControl.fxml") );
 		AnchorPane rootLayout = null;
 		try {
 			rootLayout = (AnchorPane) loader.load();
@@ -117,7 +117,7 @@ public class projectOverviewController {
 		FXMLLoader loader = new FXMLLoader();
 		System.out.print("SOW Window : ");
 		System.out.println(loader);
-		loader.setLocation( boe_tool.class.getResource("view\\SOWRefControl.fxml") );
+		loader.setLocation( boe_tool.class.getResource("view/SOWRefControl.fxml") );
 		AnchorPane rootLayout = null;
 		try {
 			rootLayout = (AnchorPane) loader.load();
