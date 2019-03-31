@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-import BOE.Main;
+import BOE.boe_tool;
 import BOE.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 public class LoginController implements Initializable {
 
 	private projectOverviewController controller;
+	private ArrayList<User> userList = new ArrayList<User>();
 
 	@FXML
 	private Label invalid_label;
@@ -30,13 +31,13 @@ public class LoginController implements Initializable {
 	@FXML
 	private void handleButtonAction(ActionEvent event) throws IOException {
 		if(validCredentials()) {
-			
+
 			//System.out.println("accepted");
 			Parent home_page_parent = FXMLLoader.load(getClass().getResource("projectOverview.fxml"));
 
 			Scene home_page_scene = new Scene(home_page_parent);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			
+
 			app_stage.hide();
 			app_stage.setScene(home_page_scene);
 			app_stage.show();
@@ -50,22 +51,19 @@ public class LoginController implements Initializable {
 	}
 
 	private boolean validCredentials() {
-		ArrayList<User> userList = new ArrayList<User>();
-		userList.add( new User("estimator", "Estimator", "", false) );
-		userList.add( new User("pm", "Project", "Manager", true) );
-
 		for(User user: userList) {
 			if(user.getUser_name().contentEquals(username_box.getText())) {
-				Main.shared.setUser(user);
+				boe_tool.shared.setUser(user);
 				return true;
 			}
 		}
 
 		return false;
 	}
-	
+
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
+		userList.add( new User("estimator", "Estimator", "", false) );
+		userList.add( new User("pm", "Project", "Manager", true) );
 	}
 }

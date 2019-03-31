@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.projectOverviewController">
+<VBox prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.projectOverviewController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -59,7 +59,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.18627450980392157, 0.820855614973262" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
         <AnchorPane prefHeight="551.0" prefWidth="165.0" SplitPane.resizableWithParent="false">
           <children>
@@ -69,6 +69,7 @@
                            <content>
                               <VBox prefHeight="18.0" prefWidth="208.0">
                                  <children>
+                                    <Label layoutX="20.0" layoutY="20.0" onMouseClicked="#setSummary" text="Overview" />
                                     <Label onMouseClicked="#setSDRLs" text="SDRLs" />
                                     <Label onMouseClicked="#setSOWs" text="SOW Paragraphs" />
                                     <Label text="..." />
@@ -80,13 +81,14 @@
                            <content>
                               <Accordion>
                                  <panes>
-                                    <TitledPane animated="false" onMouseClicked="#setSPYPrograms" text="Radar">
+                                    <TitledPane fx:id="radar" animated="false" text="Radar">
                                        <padding>
                                           <Insets left="10.0" />
                                        </padding>
                                        <content>
                                           <VBox prefHeight="18.0" prefWidth="208.0">
                                              <children>
+                                                <Label layoutX="20.0" layoutY="20.0" onMouseClicked="#setSPYPrograms" text="Overview" />
                                                 <Label text="CAM" />
                                                 <Label layoutX="20.0" layoutY="20.0" text="Functional" />
                                                 <Label layoutX="20.0" layoutY="37.0" text="Clerical" />
@@ -96,18 +98,18 @@
                                           </VBox>
                                        </content>
                                     </TitledPane>
-                                    <TitledPane animated="false" onMouseClicked="#setDMPrograms" text="DM">
+                                    <TitledPane fx:id="dm" animated="false" text="DM">
                                        <padding>
                                           <Insets left="10.0" />
                                        </padding>
                                        <content>
                                           <VBox prefHeight="18.0" prefWidth="208.0">
                                              <children>
+                                                <Label layoutX="20.0" layoutY="71.0" text="Overview" />
                                                 <Label text="CAM" />
                                                 <Label layoutX="20.0" layoutY="20.0" text="Functional" />
                                                 <Label layoutX="20.0" layoutY="37.0" text="Clerical" />
                                                 <Label layoutX="20.0" layoutY="54.0" text="..." />
-                                                <Label layoutX="20.0" layoutY="71.0" text="..." />
                                              </children>
                                           </VBox>
                                        </content>
@@ -120,7 +122,7 @@
                            <content>
                               <VBox prefHeight="18.0" prefWidth="208.0">
                                  <children>
-                                    <Label text="Summary" />
+                                    <Label onMouseClicked="#setManagement" text="Summary" />
                                     <Label layoutX="20.0" layoutY="20.0" text="CLINs" />
                                     <Label layoutX="20.0" layoutY="37.0" text="Customer WBS" />
                                     <Label layoutX="20.0" layoutY="54.0" text="Time Phase" />
@@ -149,7 +151,7 @@
         </AnchorPane>
         <ScrollPane fx:id="rootPane" prefHeight="551.0" prefWidth="501.0">
           <content>
-            <AnchorPane id="Content" fx:id="switchPane" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="444.0">
+            <AnchorPane id="Content" fx:id="switchPane" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="633.0">
               <children>
                 <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" wrapText="false">
                            <font>
@@ -174,7 +176,7 @@
         <Pane prefHeight="40.0" prefWidth="776.0" HBox.hgrow="ALWAYS">
                <children>
                   <Button mnemonicParsing="false" text="Submit Updates" />
-                  <Label fx:id="user_Label" contentDisplay="RIGHT" layoutX="713.0" layoutY="6.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="167.0" text="User" textAlignment="RIGHT" />
+                  <Label fx:id="user_Label" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="856.0" layoutY="6.0" text="User" textAlignment="RIGHT" />
                </children></Pane>
       </children>
       <padding>

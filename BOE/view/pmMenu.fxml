@@ -10,8 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView layoutX="32.0" layoutY="186.0" prefHeight="200.0" prefWidth="533.0">
         <columns>
@@ -19,8 +18,8 @@
           <TableColumn minWidth="2.0" prefWidth="193.0" text="Current Hours" />
         </columns>
       </TableView>
-      <TextField layoutX="32.0" layoutY="28.0" promptText="Pro" text="Project Name" />
-      <TextField layoutX="412.0" layoutY="28.0" text="PM Name" />
+      <TextField layoutX="32.0" layoutY="28.0" promptText="Project Name" text="Project Name" />
+      <TextField layoutX="412.0" layoutY="28.0" promptText="Project Manager" text="PM Name" />
       <TextField layoutX="210.0" layoutY="28.0" promptText="Prop Number" />
       <Label layoutX="32.0" layoutY="63.0" text="PoP" />
       <DatePicker layoutX="412.0" layoutY="59.0" promptText="End Date" />

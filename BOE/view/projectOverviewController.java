@@ -1,197 +1,130 @@
 package BOE.view;
 
 import java.io.IOException;
-
 import BOE.boe_tool;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-
 
 public class projectOverviewController {
 
-	// Reference to the main application.
-    private boe_tool mainApp;
-	
+	private boe_tool mainApp;
 	@FXML
-	private Label user_Label;
-	
-    @FXML
-    AnchorPane switchPane;
-    
-    @FXML
-    Accordion BOEA;
-        
-    @FXML
-    private void initialize() {
-    	user_Label.setText( BOE.Main.shared.getUser().getFull_name() );
-    	user_Label.setAlignment( Pos.CENTER_RIGHT );
-    	
-    }
-    
-    @FXML
-    private void closeBtnControl()
-    {
-    	//mainApp.getPrimaryStage().close();
-    	System.exit(1);
-    }
+	Label user_Label;
+	@FXML
+	AnchorPane switchPane;
+	@FXML
+	Accordion BOEA;
+	@FXML
+	TitledPane project, product, radar, dm, management, reports;	
 
+	@FXML
+	private void initialize() {
+		user_Label.setText( boe_tool.shared.getUser().getFull_name() );
+		BOEA.setExpandedPane(project);
+		setSummary();
+	}
 
-	/**
-	 * Is called by the main application to give a reference back to itself.
-	 * 
-	 * @param mainApp
-	 */
-    public void setMainApp(boe_tool mainApp) {
-    	this.mainApp = mainApp;
-    	BOEA.expandedPaneProperty().addListener(new ChangeListener<TitledPane>() {
-
-    		@Override
-    		public void changed(ObservableValue<? extends TitledPane> observable, TitledPane oldValue,
-    				TitledPane newValue) {
-    			System.out.println("Pane has changed!");
-    			if (newValue != null)
-    			{
-    				if(newValue.isExpanded())
-    				{  System.out.println("new");
-	    				System.out.println(newValue);
-	    				switch (newValue.getText())
-	    				{
-	    				case "Product":
-	    					setSummary();
-	    					break;
-	    				case "Reports" :
-	    					setReportSummary();
-	    					break;
-	    				case "Managment View":
-	    					setManagement();
-	    					break;
-	    				case "Project" :
-	    					setSummary();
-	    					break;
-	    				default :
-	    					setSummary();
-	    					break;
-	    				}
-    				}
-    			}
-    			System.out.println(observable);
-    		};
-    	});
-    }
+	@FXML
+	private void closeBtnControl() {
+		//mainApp.getPrimaryStage().close();
+		System.exit(1);
+	}
 
 	public void setSummary() {
 		// Load PM layout from fxml file.
-        FXMLLoader loader = new FXMLLoader();
-        System.out.print("Summary Window : ");
-        System.out.println(loader);
-        loader.setLocation(boe_tool.class.getResource("view\\pmMenu.fxml"));
-        AnchorPane rootLayout = null;
-        try {
-        	rootLayout = (AnchorPane) loader.load();
+		FXMLLoader loader = new FXMLLoader();
+		System.out.print("Project Summary Window : ");
+		System.out.println(loader);
+		loader.setLocation( boe_tool.class.getResource("view\\pmMenu.fxml") );
+		AnchorPane rootLayout = null;
+		try {
+			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        switchPane.getChildren().setAll(rootLayout);
+		switchPane.getChildren().setAll(rootLayout);
 	}
-    
+
 	public void setReportSummary() {
 		// Load PM layout from fxml file.
-        FXMLLoader loader = new FXMLLoader();
-        System.out.print("Summary Window : ");
-        System.out.println(loader);
-        loader.setLocation(boe_tool.class.getResource("view\\pmMenu.fxml"));
-        AnchorPane rootLayout = null;
-        try {
-        	rootLayout = (AnchorPane) loader.load();
+		FXMLLoader loader = new FXMLLoader();
+		System.out.print("Summary Window : ");
+		System.out.println(loader);
+		loader.setLocation( boe_tool.class.getResource("view\\pmMenu.fxml") );
+		AnchorPane rootLayout = null;
+		try {
+			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        switchPane.getChildren().setAll(rootLayout);
+		switchPane.getChildren().setAll(rootLayout);
 	}
-	
+
 	public void setManagement() {
-		// Load PM layout from fxml file.
-        FXMLLoader loader = new FXMLLoader();
-        System.out.print("Summary Window : ");
-        System.out.println(loader);
-        loader.setLocation(boe_tool.class.getResource("view\\pmMenu.fxml"));
-        AnchorPane rootLayout = null;
-        try {
-        	rootLayout = (AnchorPane) loader.load();
+		FXMLLoader loader = new FXMLLoader();
+		System.out.print("Management Summary Window : ");
+		System.out.println(loader);
+		loader.setLocation( boe_tool.class.getResource("view\\managementSummary.fxml") );
+		AnchorPane rootLayout = null;
+		try {
+			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        switchPane.getChildren().setAll(rootLayout);
+		switchPane.getChildren().setAll(rootLayout);
 	}
-   public void setSPYPrograms()
-   {
-	   FXMLLoader loader = new FXMLLoader();
-	   System.out.print("SPY Window : ");
-       System.out.println(loader);
-       loader.setLocation(boe_tool.class.getResource("view\\productSummary.fxml"));
-       AnchorPane rootLayout = null;
-       try {
-       	rootLayout = (AnchorPane) loader.load();
+
+	public void setSPYPrograms() {
+		FXMLLoader loader = new FXMLLoader();
+		System.out.print("SPY Window : ");
+		System.out.println(loader);
+		loader.setLocation( boe_tool.class.getResource("view\\productSummary.fxml") );
+		AnchorPane rootLayout = null;
+		try {
+			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-       switchPane.getChildren().setAll(rootLayout);
-   }
-   
-   public void setDMPrograms() {
-	   FXMLLoader loader = new FXMLLoader();
-	   System.out.print("DM Window : ");
-       System.out.println(loader);
-       loader.setLocation(boe_tool.class.getResource("view\\productSummary.fxml"));
-       AnchorPane rootLayout = null;
-       try {
-       	rootLayout = (AnchorPane) loader.load();
+		switchPane.getChildren().setAll(rootLayout);
+	}
+
+	public void setSDRLs() {
+		FXMLLoader loader = new FXMLLoader();
+		System.out.print("SDRL Window : ");
+		System.out.println(loader);
+		loader.setLocation( boe_tool.class.getResource("view\\SDRLControl.fxml") );
+		AnchorPane rootLayout = null;
+		try {
+			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-       switchPane.getChildren().setAll(rootLayout);
-   }
-   
-   public void setSDRLs() {
-	   FXMLLoader loader = new FXMLLoader();
-	   System.out.print("SDRL Window : ");
-       System.out.println(loader);
-       loader.setLocation(boe_tool.class.getResource("view\\SDRLControl.fxml"));
-       AnchorPane rootLayout = null;
-       try {
-       	rootLayout = (AnchorPane) loader.load();
+		switchPane.getChildren().setAll(rootLayout);
+	}
+
+	public void setSOWs() {
+		FXMLLoader loader = new FXMLLoader();
+		System.out.print("SOW Window : ");
+		System.out.println(loader);
+		loader.setLocation( boe_tool.class.getResource("view\\SOWRefControl.fxml") );
+		AnchorPane rootLayout = null;
+		try {
+			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-       switchPane.getChildren().setAll(rootLayout);
-   }
-   public void setSOWs() {
-	   FXMLLoader loader = new FXMLLoader();
-	   System.out.print("SOW Window : ");
-       System.out.println(loader);
-       loader.setLocation(boe_tool.class.getResource("view\\SOWRefControl.fxml"));
-       AnchorPane rootLayout = null;
-       try {
-       	rootLayout = (AnchorPane) loader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-       switchPane.getChildren().setAll(rootLayout);
-   }
+		switchPane.getChildren().setAll(rootLayout);
+	}
 }
