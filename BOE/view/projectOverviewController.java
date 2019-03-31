@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 
 public class projectOverviewController {
 
-	private boe_tool mainApp;
 	@FXML
 	Label user_Label;
 	@FXML
@@ -32,7 +31,6 @@ public class projectOverviewController {
 
 	@FXML
 	private void closeBtnControl() {
-		//mainApp.getPrimaryStage().close();
 		System.exit(1);
 	}
 
@@ -46,7 +44,6 @@ public class projectOverviewController {
 		try {
 			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		switchPane.getChildren().setAll(rootLayout);
@@ -62,7 +59,6 @@ public class projectOverviewController {
 		try {
 			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		switchPane.getChildren().setAll(rootLayout);
@@ -77,7 +73,6 @@ public class projectOverviewController {
 		try {
 			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		switchPane.getChildren().setAll(rootLayout);
@@ -92,7 +87,6 @@ public class projectOverviewController {
 		try {
 			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		switchPane.getChildren().setAll(rootLayout);
@@ -107,7 +101,6 @@ public class projectOverviewController {
 		try {
 			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		switchPane.getChildren().setAll(rootLayout);
@@ -122,7 +115,6 @@ public class projectOverviewController {
 		try {
 			rootLayout = (AnchorPane) loader.load();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		switchPane.getChildren().setAll(rootLayout);

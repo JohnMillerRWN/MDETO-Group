@@ -12,7 +12,7 @@ public class boe_tool extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("view/Login.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("view/0_login.fxml"));
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);

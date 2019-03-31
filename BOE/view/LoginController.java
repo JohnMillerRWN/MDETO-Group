@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class LoginController implements Initializable {
+public class loginController implements Initializable {
 
 	private projectOverviewController controller;
 	private ArrayList<User> userList = new ArrayList<User>();
@@ -33,7 +33,7 @@ public class LoginController implements Initializable {
 		if(validCredentials()) {
 
 			//System.out.println("accepted");
-			Parent home_page_parent = FXMLLoader.load(getClass().getResource("projectOverview.fxml"));
+			Parent home_page_parent = FXMLLoader.load(getClass().getResource("1_projectOverview.fxml"));
 
 			Scene home_page_scene = new Scene(home_page_parent);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
