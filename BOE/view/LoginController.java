@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class loginController implements Initializable {
+public class LoginController implements Initializable {
 
 	private projectOverviewController controller;
 	private ArrayList<User> userList = new ArrayList<User>();
