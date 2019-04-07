@@ -12,13 +12,16 @@ public class boe_tool extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
+		//shared.fillDBProjectList();
+		//System.out.println( shared.getProjectList().get(0).getProject_name() );
+
 		Parent root = FXMLLoader.load(getClass().getResource("view/0_login.fxml"));
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("BOE Tool");
 
-		stage.show();
+		stage.show();	
 	}
 
 	public static void main() {

@@ -12,16 +12,19 @@ class JdbcTest {
 			Class.forName("com.mysql.cj.jdbc.Driver"); 
 
 			// Step 2: Establish the connection to the database 
-			String url = "jdbc:mysql://localhost:3306/sakila"; 
+			String url = "jdbc:mysql://localhost:3306/mdeto"; 
 			Connection conn = DriverManager.getConnection(url,"test","password");
 			
 			// Step 3: Query the database
 			Statement stmt = conn.createStatement();  
-			ResultSet result = stmt.executeQuery("SELECT * FROM actor LIMIT 10");  
+			ResultSet result = stmt.executeQuery("SELECT * FROM project");  
 			
 			//Step 4: Print out result of query
 			while( result.next() ) {
-				System.out.println( result.getInt(1) + "\t| " + result.getString(2) + "  " + result.getString(3) );
+				System.out.println( result.getInt(1) + " | " + result.getString(2) + " | " + 
+									result.getDate(3) + " | " + result.getDate(4) + " | " + 
+									result.getDate(5)	+ " | " + result.getInt(6) + " | " + 
+									result.getString(7) );
 			}
 			
 			//Step 5: Close the database connection

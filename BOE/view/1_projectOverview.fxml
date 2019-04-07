@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.projectOverviewController">
+<VBox prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.projectOverviewController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -59,7 +59,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane dividerPositions="0.18627450980392157, 0.820855614973262" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.162426614481409, 0.7759295499021527" focusTraversable="true" prefHeight="541.0" prefWidth="790.0" VBox.vgrow="ALWAYS">
       <items>
         <AnchorPane prefHeight="551.0" prefWidth="165.0" SplitPane.resizableWithParent="false">
           <children>
@@ -149,7 +149,7 @@
                   </Accordion>
           </children>
         </AnchorPane>
-        <ScrollPane fx:id="rootPane" prefHeight="551.0" prefWidth="501.0">
+        <ScrollPane fx:id="rootPane" prefHeight="533.0" prefWidth="663.0">
           <content>
             <AnchorPane id="Content" fx:id="switchPane" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="633.0">
               <children>
@@ -164,11 +164,11 @@
             </AnchorPane>
           </content>
         </ScrollPane>
-        <AnchorPane prefHeight="551.0" prefWidth="88.0" visible="false">
-          <children>
-            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-          </children>
-        </AnchorPane>
+            <ScrollPane fx:id="branchPane" prefHeight="539.0" prefWidth="196.0">
+               <content>
+                  <AnchorPane fx:id="listPane" />
+               </content>
+            </ScrollPane>
       </items>
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
