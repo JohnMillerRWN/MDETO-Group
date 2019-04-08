@@ -17,7 +17,8 @@ class JdbcTest {
 			
 			// Step 3: Query the database
 			Statement stmt = conn.createStatement();  
-			ResultSet result = stmt.executeQuery("SELECT * FROM project");  
+			//ResultSet result = stmt.executeQuery("SELECT * FROM project");  
+			ResultSet result = stmt.executeQuery("SELECT * FROM project where project_id = 1");
 			
 			//Step 4: Print out result of query
 			while( result.next() ) {

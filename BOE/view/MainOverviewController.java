@@ -15,14 +15,10 @@ import javafx.scene.control.Label;
 
 public class MainOverviewController {
 
-	@FXML
-	Label user_Label;
-	@FXML
-	AnchorPane switchPane, listPane;
-	@FXML
-	Accordion BOEA;
-	@FXML
-	TitledPane project, product, radar, dm, management, reports;	
+	@FXML Label user_Label;
+	@FXML AnchorPane switchPane, listPane;
+	@FXML Accordion BOEA;
+	@FXML TitledPane project, product, radar, dm, management, reports;	
 
 	@FXML
 	private void initialize() {

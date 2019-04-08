@@ -19,19 +19,13 @@ import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 
-	private MainOverviewController controller;
 	private ArrayList<User> userList = new ArrayList<User>();
 
-	@FXML
-	private Label invalid_label;
-
-	@FXML
-	private TextField username_box;
-
-	@FXML
-	private void handleButtonAction(ActionEvent event) throws IOException {
+	@FXML private Label invalid_label;
+	@FXML private TextField username_box;
+	
+	@FXML private void handleButtonAction(ActionEvent event) throws IOException {
 		if(validCredentials()) {
-
 			//System.out.println("accepted");
 			Parent home_page_parent = FXMLLoader.load(getClass().getResource("1_MainOverview.fxml"));
 
@@ -57,7 +51,6 @@ public class LoginController implements Initializable {
 				return true;
 			}
 		}
-
 		return false;
 	}
 
