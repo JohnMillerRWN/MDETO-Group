@@ -12,7 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class projectListController {
+public class ProjectListController {
 
 	private db_import db = new db_import();
 	private ResultSet result;

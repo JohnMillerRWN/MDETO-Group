@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
 
-	private projectOverviewController controller;
+	private MainOverviewController controller;
 	private ArrayList<User> userList = new ArrayList<User>();
 
 	@FXML
@@ -33,7 +33,7 @@ public class LoginController implements Initializable {
 		if(validCredentials()) {
 
 			//System.out.println("accepted");
-			Parent home_page_parent = FXMLLoader.load(getClass().getResource("1_projectOverview.fxml"));
+			Parent home_page_parent = FXMLLoader.load(getClass().getResource("1_MainOverview.fxml"));
 
 			Scene home_page_scene = new Scene(home_page_parent);
 			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

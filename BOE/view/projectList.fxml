@@ -4,9 +4,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="199.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.projectListController">
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.ProjectListController">
    <children>
-      <TableView fx:id="project_list" prefHeight="542.0" prefWidth="200.0">
+      <TableView fx:id="project_list">
          <columns>
             <TableColumn fx:id="idCol" prefWidth="48.0" text="ID" />
             <TableColumn fx:id="nameCol" prefWidth="151.0" text="Project Name" />

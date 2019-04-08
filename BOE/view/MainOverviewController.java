@@ -13,7 +13,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 
-public class projectOverviewController {
+public class MainOverviewController {
 
 	@FXML
 	Label user_Label;
@@ -43,7 +43,7 @@ public class projectOverviewController {
 		
 		System.out.println("Project Summary Window");
 		
-		loader.setLocation( boe_tool.class.getResource("view/pmMenu.fxml") );
+		loader.setLocation( boe_tool.class.getResource("view/projectSummary.fxml") );
 		AnchorPane rootLayout = null;
 		try {
 			rootLayout = (AnchorPane) loader.load();
@@ -59,7 +59,7 @@ public class projectOverviewController {
 		
 		System.out.println("Summary Window");
 		
-		loader.setLocation( boe_tool.class.getResource("view/pmMenu.fxml") );
+		loader.setLocation( boe_tool.class.getResource("view/projectSummary.fxml") );
 		AnchorPane rootLayout = null;
 		try {
 			rootLayout = (AnchorPane) loader.load();

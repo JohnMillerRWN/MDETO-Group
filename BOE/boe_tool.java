@@ -15,7 +15,7 @@ public class boe_tool extends Application {
 		//shared.fillDBProjectList();
 		//System.out.println( shared.getProjectList().get(0).getProject_name() );
 
-		Parent root = FXMLLoader.load(getClass().getResource("view/0_login.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("view/0_Login.fxml"));
 
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
