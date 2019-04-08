@@ -20,20 +20,18 @@ public class projectListController {
 	private ObservableList<Project> data;
 
 	@FXML private TableView<Project> project_list;
-	@FXML private TableColumn<Project, String> idCol, nameCol;
+	@FXML private TableColumn<Project, String> idCol;
+	@FXML private TableColumn<Project, String> nameCol;
 
 
 	@FXML
 	private void initialize() {
-		//idCol.setCellValueFactory(c -> new SimpleStringProperty(new String("123")));
-
 		idCol.setCellValueFactory(new PropertyValueFactory<Project, String>("id"));
 		nameCol.setCellValueFactory(new PropertyValueFactory<Project, String>("name"));
 		
-		data = FXCollections.observableArrayList(parseProjectList() );
+		data = FXCollections.observableArrayList( parseProjectList() );
 		
 		project_list.getItems().setAll(data);
-		//System.out.println(idCol.getCellData(0));
 	}
 
 	private ArrayList<Project> parseProjectList() {
@@ -55,7 +53,7 @@ public class projectListController {
 		}
 	}
 
-	private class Project {
+	public class Project {
 		private SimpleStringProperty id;
 		private SimpleStringProperty name;
 
@@ -64,18 +62,18 @@ public class projectListController {
 			name = new SimpleStringProperty(nameIn);
 		}
 		
-		public String getid() {
+		public String getId() {
 			return id.get();
 		}
 		
-		public void setid(String idIn) {
+		public void setId(String idIn) {
 			id.set(idIn);
 		}
 		
-		public String getname() {
+		public String getName() {
 			return name.get();
 		}
-		public void setname(String nameIn) {
+		public void setName(String nameIn) {
 			name.set(nameIn);
 		}
 		
