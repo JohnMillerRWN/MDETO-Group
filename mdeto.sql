@@ -34,3 +34,8 @@ INSERT INTO project ( project_id, project_name, start_date, end_date, created_da
    VALUES ( 1, 'Primary Test', '2019-05-01', '2020-05-01', CURDATE(), 1, 'Testing the first project' );
 INSERT INTO project ( project_id, project_name, start_date, end_date, created_date, project_manager, short_desc )
    VALUES ( 2, 'Second Project', '2019-05-01', '2020-05-01', CURDATE(), 1, 'Another Test Project' );
+INSERT INTO project ( project_id, project_name, start_date, end_date, created_date, project_manager, short_desc )
+   VALUES ( 3, 'Third Project', '2019-05-01', '2020-05-01', CURDATE(), 1, 'Testing Projects' );
+INSERT INTO project ( project_id, project_name, start_date, end_date, created_date, project_manager, short_desc )
+   VALUES ( 4, 'Fourth Project', '2015-03-21', '2020-05-01', CURDATE(), 1, 'One more project under the sun' );
+   

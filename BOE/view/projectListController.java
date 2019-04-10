@@ -21,14 +21,14 @@ public class ProjectListController {
 	private ObservableList<Project> data;
 
 	@FXML private TableView<Project> project_list;
-	@FXML private TableColumn<Project, String> idCol;
+	@FXML private TableColumn<Project, Integer> idCol;
 	@FXML private TableColumn<Project, String> nameCol;
 	@FXML private Button loadButton;
 
 
 	@FXML
 	private void initialize() {
-		idCol.setCellValueFactory(new PropertyValueFactory<Project, String>("id"));
+		idCol.setCellValueFactory(new PropertyValueFactory<Project, Integer>("id"));
 		nameCol.setCellValueFactory(new PropertyValueFactory<Project, String>("name"));
 		
 		data = FXCollections.observableArrayList( parseProjectList() );
@@ -49,7 +49,7 @@ public class ProjectListController {
 			result = db.query("SELECT project_id, project_name FROM project");
 
 			while(result.next()) {
-				list.add( new Project(result.getString(1), result.getString(2)) );
+				list.add( new Project(result.getInt(1), result.getString(2)) );
 			}
 			
 			db.db_close();
@@ -62,27 +62,27 @@ public class ProjectListController {
 	}
 
 	public class Project {
-		private SimpleStringProperty id;
-		private SimpleStringProperty name;
+		private Integer id;
+		private String name;
 
-		private Project(String idIn, String nameIn) {
-			id = new SimpleStringProperty(idIn);
-			name = new SimpleStringProperty(nameIn);
+		private Project(int idIn, String nameIn) {
+			id = idIn;
+			name = nameIn;
 		}
 		
-		public String getId() {
-			return id.get();
+		public Integer getId() {
+			return id;
 		}
 		
-		public void setId(String idIn) {
-			id.set(idIn);
+		public void setId(Integer idIn) {
+			id = idIn; 
 		}
 		
 		public String getName() {
-			return name.get();
+			return name;
 		}
 		public void setName(String nameIn) {
-			name.set(nameIn);
+			name = nameIn;
 		}
 		
 		public String toString() {

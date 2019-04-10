@@ -23,7 +23,7 @@ public class ProjectSummaryController {
 	
 	@FXML
 	private void initialize() {
-		setProject(1);
+		setProject(4);
 	}
 	
 	private void setProject(int id) {
