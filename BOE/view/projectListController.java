@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -22,6 +23,7 @@ public class ProjectListController {
 	@FXML private TableView<Project> project_list;
 	@FXML private TableColumn<Project, String> idCol;
 	@FXML private TableColumn<Project, String> nameCol;
+	@FXML private Button loadButton;
 
 
 	@FXML
@@ -33,8 +35,14 @@ public class ProjectListController {
 		
 		project_list.getItems().setAll(data);
 	}
-
-	private ArrayList<Project> parseProjectList() {
+	
+	@FXML
+	private void getProjectFromList() {
+		//MainOverviewController	
+		System.out.println( project_list.getSelectionModel().getSelectedItem() );
+	}
+	
+ 	private ArrayList<Project> parseProjectList() {
 		db.db_open();
 
 		try {
