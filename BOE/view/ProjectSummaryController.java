@@ -41,7 +41,7 @@ public class ProjectSummaryController implements Initializable, Subscriber {
 		db.db_open();
 
 		try {
-			result = db.query("SELECT * FROM project where project_id = " + id);
+			result = db.query("SELECT * FROM project_view where project_id = " + id);
 
 			while(result.next()) {
 				prjName.setText(result.getString(2));
