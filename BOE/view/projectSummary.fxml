@@ -13,17 +13,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.ProjectSummaryController">
    <children>
-      <TextField fx:id="prjName" layoutX="32.0" layoutY="28.0" promptText="Project Name" text="Project Name" />
-      <TextField fx:id="propNumber" layoutX="210.0" layoutY="28.0" promptText="Prop Number" />
-      <TextField fx:id="prjManager" layoutX="412.0" layoutY="28.0" promptText="Project Manager" text="PM Name" />
-      <Label fx:id="pop" layoutX="32.0" layoutY="63.0" text="PoP" />
+      <TextField fx:id="prjName" layoutX="32.0" layoutY="28.0" promptText="Project Name" />
+      <TextField fx:id="propNumber" layoutX="210.0" layoutY="28.0" promptText="Proposal Number" />
+      <TextField fx:id="prjManager" layoutX="412.0" layoutY="28.0" promptText="Project Manager" />
+      <Label fx:id="pop" layoutX="32.0" layoutY="63.0" text="Period of Performance" />
       <DatePicker fx:id="startDate" layoutX="210.0" layoutY="59.0" promptText="Start Date" />
       <DatePicker fx:id="endDate" layoutX="412.0" layoutY="59.0" promptText="End Date" />
       <ComboBox layoutX="32.0" layoutY="99.0" prefWidth="150.0" promptText="Default Rate Pool" />
       <ComboBox layoutX="210.0" layoutY="99.0" prefWidth="150.0" promptText="Default Spread" />
       <ComboBox fx:id="product" layoutX="32.0" layoutY="149.0" prefWidth="150.0" promptText="Product" />
       <Button fx:id="addProductButton" layoutX="210.0" layoutY="149.0" mnemonicParsing="false" text="Add Product" />
-      <TextArea fx:id="prjDesc" layoutX="409.0" layoutY="100.0" prefHeight="71.0" prefWidth="149.0" promptText="Project Description" text="Short Description" />
+      <TextArea fx:id="prjDesc" layoutX="409.0" layoutY="100.0" prefHeight="71.0" prefWidth="149.0" promptText="Project Description" />
       <TableView fx:id="productTable" layoutX="32.0" layoutY="186.0" prefHeight="200.0" prefWidth="533.0">
         <columns>
           <TableColumn fx:id="productCol" prefWidth="339.0" text="Product" />

@@ -24,7 +24,7 @@ public class MainOverviewController {
 	private void initialize() {
 		user_Label.setText( boe_tool.shared.getUser().getFull_name() );
 		BOEA.setExpandedPane(project);
-		setSummary();
+		setProjectSummary();
 		setProjectTbl();
 	}
 
@@ -33,65 +33,37 @@ public class MainOverviewController {
 		System.exit(1);
 	}
 
-	public void setSummary()  {		
-		try {
-			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/projectSummary.fxml"));
-			System.out.println("Project Summary Window");
-			switchPane.getChildren().setAll(pane);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void setProjectSummary()  {		
+		switchPaneView("view/projectSummary.fxml");
 	}
 
 	public void setReportSummary() {
-		try {
-			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/projectSummary.fxml"));
-			System.out.println("Summary Window");
-			switchPane.getChildren().setAll(pane);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		switchPaneView("view/projectSummary.fxml");
 	}
 
 	public void setManagement() {
-		try {
-			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/managementSummary.fxml"));
-			System.out.println("Management Summary Window");
-			switchPane.getChildren().setAll(pane);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		switchPaneView("view/managementSummary.fxml");
 	}
 
 	public void setSPYPrograms() {
-		try {
-			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/productSummary.fxml"));
-			System.out.println("SPY Window");
-			switchPane.getChildren().setAll(pane);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		switchPaneView("view/productSummary.fxml");
 	}
 
 	public void setSDRLs() {
-		try {
-			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/SDRLControl.fxml"));
-			System.out.println("SDRL Window");
-			switchPane.getChildren().setAll(pane);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		switchPaneView("view/SDRLControl.fxml");
 	}
 
 	public void setSOWs() {
+		switchPaneView("view/SOWRefControl.fxml");
+	}
+	
+	public void setProjectTbl() {
+		listPaneView("view/projectList.fxml");		
+	}
+	
+	public void switchPaneView(String resource_path) {
 		try {
-			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/SOWRefControl.fxml"));
-			System.out.println("SOW Window");
+			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource(resource_path));
 			switchPane.getChildren().setAll(pane);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -99,14 +71,13 @@ public class MainOverviewController {
 		}
 	}
 	
-	public void setProjectTbl() {
+	public void listPaneView(String resource_path) {
 		try {
-			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/projectList.fxml"));
-			System.out.println("Project Table Window");
+			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource(resource_path));
 			listPane.getChildren().setAll(pane);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
 	}
 }

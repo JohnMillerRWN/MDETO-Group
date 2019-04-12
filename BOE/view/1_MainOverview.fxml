@@ -66,7 +66,7 @@
                            <content>
                               <VBox prefHeight="18.0" prefWidth="208.0">
                                  <children>
-                                    <Label layoutX="20.0" layoutY="20.0" onMouseClicked="#setSummary" text="Overview" />
+                                    <Label layoutX="20.0" layoutY="20.0" onMouseClicked="#setProjectSummary" text="Overview" />
                                     <Label onMouseClicked="#setSDRLs" text="SDRLs" />
                                     <Label onMouseClicked="#setSOWs" text="SOW Paragraphs" />
                                     <Label text="..." />

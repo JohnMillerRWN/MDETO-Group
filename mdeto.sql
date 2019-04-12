@@ -1,7 +1,8 @@
-create database mdeto;
-use mdeto;
+DROP DATABASE IF EXISTS mdeto;
+CREATE DATABASE mdeto;
+USE mdeto;
 
-CREATE TABLE IF NOT EXISTS sys_user (
+CREATE TABLE sys_user (
 	user_id INT UNIQUE AUTO_INCREMENT,
     first_name VARCHAR(20),
     mid_name VARCHAR(20),
@@ -13,19 +14,20 @@ CREATE TABLE IF NOT EXISTS sys_user (
     PRIMARY KEY (user_id)
 );
 
-CREATE TABLE IF NOT EXISTS project (
+CREATE TABLE project (
     project_id INT UNIQUE AUTO_INCREMENT,
     project_name VARCHAR(255) NOT NULL,
-    start_date DATE,									# date format is YYYY-MM-DD
-    end_date DATE,										# date format is YYYY-MM-DD
-    created_date DATETIME DEFAULT CURRENT_TIMESTAMP,	# datetime format is YYYY-MM-DD HH:MM:SS
+    start_date DATE,												# date format is YYYY-MM-DD
+    end_date DATE,													# date format is YYYY-MM-DD
+    created_date DATETIME DEFAULT CURRENT_TIMESTAMP,				# datetime format is YYYY-MM-DD HH:MM:SS
+    pop INT GENERATED ALWAYS AS ( datediff(end_date, start_date) ),	# period of performance in days
     project_manager INT,
     short_desc TEXT,
     PRIMARY KEY (project_id),
     FOREIGN KEY (project_manager) REFERENCES sys_user(user_id)
 );
 
-CREATE TABLE IF NOT EXISTS clin (
+CREATE TABLE clin (
 	clin_id INT UNIQUE AUTO_INCREMENT,
     clin_name VARCHAR(255) NOT NULL,
     start_date DATE,									# date format is YYYY-MM-DD
@@ -38,7 +40,7 @@ CREATE TABLE IF NOT EXISTS clin (
     FOREIGN KEY (project_id) REFERENCES project(project_id)
 );
 
-CREATE TABLE IF NOT EXISTS product (
+CREATE TABLE product (
 	product_id INT UNIQUE AUTO_INCREMENT,
     product_name VARCHAR(255) NOT NULL,
     start_date DATE,									# date format is YYYY-MM-DD
@@ -56,14 +58,13 @@ CREATE VIEW project_view AS
 		p.project_name, 
 		p.start_date, 
 		p.end_date, 
-		p.created_date,  
+		CAST(p.created_date AS DATE) AS 'created_date',  
 		concat(u.first_name, ' ', u.last_name) AS 'project_manager',
 		p.short_desc
 	FROM 
 		project p
 	JOIN 
-		sys_user u 
-		ON 
+		sys_user u ON 
 		u.user_id = p.project_manager;
 
 INSERT INTO sys_user ( first_name, last_name, active, project_manager )
@@ -80,4 +81,4 @@ INSERT INTO project ( project_name, start_date, end_date, project_manager, short
 INSERT INTO project ( project_name, start_date, end_date, project_manager, short_desc )
    VALUES ( 'Fourth Project', '2015-03-21', '2020-12-25', 1, 'One more project under the sun' );
 INSERT INTO project ( project_name, start_date, end_date, project_manager, short_desc )
-   VALUES ( 'Bee Movie', '2007-11-02', '2007-11-02', 1, "According to all known laws of aviation, there is no way a bee should be able to fly.  Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. Yellow, black. Yellow, black. Ooh, black and yellow! Let's shake it up a little. Barry! Breakfast is ready!");
+   VALUES ( 'Bee Movie', '2007-11-02', '2007-11-02', 1, "According to all known laws \nof aviation, \nthere is no way a bee \nshould be able to fly. \nIts wings are too small to get \nits fat little body off the ground. \nThe bee, of course, flies anyway \nbecause bees don't care \nwhat humans think is impossible. \nYellow, black. Yellow, black. \nYellow, black. Yellow, black. \nOoh, black and yellow! \nLet's shake it up a little. \nBarry! Breakfast is ready!");

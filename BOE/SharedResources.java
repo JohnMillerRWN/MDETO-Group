@@ -26,13 +26,13 @@ public class SharedResources {
 		db.db_open();
 		
 		try {
-			result = db.query("SELECT * FROM project");
+			result = db.query("SELECT * FROM project_view");
 			
 			while( result.next() ) {
 				project_list.add(  
 						new Project_BOE( result.getInt(1), result.getString(2), 
 										 result.getDate(3), result.getDate(4), 
-										 result.getDate(5), result.getInt(6), 
+										 result.getTimestamp(5), result.getString(6), 
 										 result.getString(7))
 						);
 			}

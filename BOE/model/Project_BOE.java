@@ -4,18 +4,16 @@ import java.util.*;
 
 public class Project_BOE {
 	private int project_id;
-	private String project_name;
+	private String project_name, project_manager, short_desc;
     private Date start_date, end_date, created_date;
-    private int project_manager;
-    private String short_desc;
 
-	public Project_BOE(int pid, String p_name, Date sdate, Date edate, Date cdate, int pm, String desc) {
-		this.project_id = pid;
-		this.project_name = p_name;
-		this.start_date = sdate;
-		this.end_date = edate;
-		this.created_date = cdate;
-		this.project_manager = pm;
+	public Project_BOE(int project_id, String project_name, Date start_date, Date end_date, Date created_date, String project_manager, String desc) {
+		this.project_id = project_id;
+		this.project_name = project_name;
+		this.start_date = start_date;
+		this.end_date = end_date;
+		this.created_date = created_date;
+		this.project_manager = project_manager;
 		this.short_desc = desc;
 	}
 
@@ -73,11 +71,11 @@ public class Project_BOE {
 		this.created_date = created_date;
 	}
 
-	public int getProject_manager() {
+	public String getProject_manager() {
 		return project_manager;
 	}
 
-	public void setProject_manager(int project_manager) {
+	public void setProject_manager(String project_manager) {
 		this.project_manager = project_manager;
 	}
 

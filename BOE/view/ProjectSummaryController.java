@@ -33,8 +33,8 @@ public class ProjectSummaryController implements Initializable, Subscriber {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//registers class with EventBus for listener
 		boe_tool.eventBus.register(this);
-		setProject(4);
 	}
 	
 	private void setProject(int id) {
@@ -59,6 +59,10 @@ public class ProjectSummaryController implements Initializable, Subscriber {
 		}
 	}
 
+	/**
+	 * Listener for EventBus. When triggered the Project will be reloaded to the id provided
+	 * @param event requires a ProjectChangeEvent
+	 */
 	@Subscribe
 	public void reloadProject(ProjectChangeEvent event) {
 		final int pid = event.getProject_id();

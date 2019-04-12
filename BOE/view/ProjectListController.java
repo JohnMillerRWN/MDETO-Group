@@ -47,20 +47,17 @@ public class ProjectListController {
 		
 		//sends Project ID to EventBus
 		boe_tool.eventBus.post(new ProjectChangeEvent(project_id));
-		
-		System.out.println(project_id);
 	}
 	
  	private ArrayList<Project> parseProjectList() {
 		db.db_open();
 
 		try {
-			result = db.query("SELECT project_id, project_name FROM project");
+			result = db.query("SELECT project_id, project_name FROM project ORDER BY project_id DESC");
 
 			while(result.next()) {
 				list.add( new Project(result.getInt(1), result.getString(2)) );
 			}
-			Collections.reverse(list);
 			
 			db.db_close();
 			return list;

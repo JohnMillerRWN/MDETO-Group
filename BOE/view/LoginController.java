@@ -13,16 +13,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class LoginController implements Initializable {
+public class LoginController {
 
 	private ArrayList<User> userList = new ArrayList<User>();
 
 	@FXML private Label invalid_label;
 	@FXML private TextField username_box;
+	@FXML private Button login_button;
 	
 	@FXML private void handleButtonAction(ActionEvent event) throws IOException {
 		if(validCredentials()) {
@@ -54,9 +56,9 @@ public class LoginController implements Initializable {
 		return false;
 	}
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
+	public void initialize() {
 		userList.add( new User("estimator", "Estimator", "", false) );
 		userList.add( new User("pm", "Project", "Manager", true) );
+		username_box.requestFocus();
 	}
 }
