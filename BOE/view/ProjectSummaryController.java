@@ -1,16 +1,26 @@
 package BOE.view;
 
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
+
+import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
+
+import BOE.boe_tool;
+import BOE.events.ProjectChangeEvent;
+import BOE.events.Subscriber;
 import BOE.util.db_import;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class ProjectSummaryController {
+public class ProjectSummaryController implements Initializable, Subscriber {
 	
 	private db_import db = new db_import();
 	private ResultSet result;
@@ -21,8 +31,9 @@ public class ProjectSummaryController {
 	@FXML private DatePicker startDate, endDate;
 	@FXML private TextArea prjDesc;
 	
-	@FXML
-	private void initialize() {
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		boe_tool.eventBus.register(this);
 		setProject(4);
 	}
 	
@@ -46,5 +57,11 @@ public class ProjectSummaryController {
 			db.db_close();
 			System.out.println(e.getMessage());
 		}
+	}
+
+	@Subscribe
+	public void reloadProject(ProjectChangeEvent event) {
+		final int pid = event.getProject_id();
+		setProject(pid);
 	}
 }

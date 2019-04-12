@@ -5,6 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import com.google.common.eventbus.EventBus;
+
+import BOE.boe_tool;
+import BOE.events.ProjectChangeEvent;
 import BOE.util.db_import;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,8 +43,12 @@ public class ProjectListController {
 	
 	@FXML
 	private void getProjectFromList() {
-		//MainOverviewController	
-		System.out.println( project_list.getSelectionModel().getSelectedItem() );
+		int project_id = project_list.getSelectionModel().getSelectedItem().getId();
+		
+		//sends Project ID to EventBus
+		boe_tool.eventBus.post(new ProjectChangeEvent(project_id));
+		
+		System.out.println(project_id);
 	}
 	
  	private ArrayList<Project> parseProjectList() {
