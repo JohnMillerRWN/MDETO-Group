@@ -33,111 +33,80 @@ public class MainOverviewController {
 		System.exit(1);
 	}
 
-	public void setSummary() {
-		// Load PM layout from fxml file.
-		FXMLLoader loader = new FXMLLoader();
-		
-		System.out.println("Project Summary Window");
-		
-		loader.setLocation( boe_tool.class.getResource("view/projectSummary.fxml") );
-		AnchorPane rootLayout = null;
+	public void setSummary()  {		
 		try {
-			rootLayout = (AnchorPane) loader.load();
+			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/projectSummary.fxml"));
+			System.out.println("Project Summary Window");
+			switchPane.getChildren().setAll(pane);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		switchPane.getChildren().setAll(rootLayout);
 	}
 
 	public void setReportSummary() {
-		// Load PM layout from fxml file.
-		FXMLLoader loader = new FXMLLoader();
-		
-		System.out.println("Summary Window");
-		
-		loader.setLocation( boe_tool.class.getResource("view/projectSummary.fxml") );
-		AnchorPane rootLayout = null;
 		try {
-			rootLayout = (AnchorPane) loader.load();
+			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/projectSummary.fxml"));
+			System.out.println("Summary Window");
+			switchPane.getChildren().setAll(pane);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		switchPane.getChildren().setAll(rootLayout);
 	}
 
 	public void setManagement() {
-		FXMLLoader loader = new FXMLLoader();
-		
-		System.out.println("Management Summary Window");
-		
-		loader.setLocation( boe_tool.class.getResource("view/managementSummary.fxml") );
-		AnchorPane rootLayout = null;
 		try {
-			rootLayout = (AnchorPane) loader.load();
+			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/managementSummary.fxml"));
+			System.out.println("Management Summary Window");
+			switchPane.getChildren().setAll(pane);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		switchPane.getChildren().setAll(rootLayout);
 	}
 
 	public void setSPYPrograms() {
-		FXMLLoader loader = new FXMLLoader();
-		
-		System.out.println("SPY Window");
-		
-		loader.setLocation( boe_tool.class.getResource("view/productSummary.fxml") );
-		AnchorPane rootLayout = null;
 		try {
-			rootLayout = (AnchorPane) loader.load();
+			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/productSummary.fxml"));
+			System.out.println("SPY Window");
+			switchPane.getChildren().setAll(pane);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		switchPane.getChildren().setAll(rootLayout);
 	}
 
 	public void setSDRLs() {
-		FXMLLoader loader = new FXMLLoader();
-		
-		System.out.println("SDRL Window");
-
-		loader.setLocation( boe_tool.class.getResource("view/SDRLControl.fxml") );
-		AnchorPane rootLayout = null;
 		try {
-			rootLayout = (AnchorPane) loader.load();
+			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/SDRLControl.fxml"));
+			System.out.println("SDRL Window");
+			switchPane.getChildren().setAll(pane);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		switchPane.getChildren().setAll(rootLayout);
 	}
 
 	public void setSOWs() {
-		FXMLLoader loader = new FXMLLoader();
-		
-		System.out.println("SOW Window");
-
-		loader.setLocation( boe_tool.class.getResource("view/SOWRefControl.fxml") );
-		AnchorPane rootLayout = null;
 		try {
-			rootLayout = (AnchorPane) loader.load();
+			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/SOWRefControl.fxml"));
+			System.out.println("SOW Window");
+			switchPane.getChildren().setAll(pane);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		switchPane.getChildren().setAll(rootLayout);
 	}
 	
 	public void setProjectTbl() {
-		FXMLLoader loader = new FXMLLoader();
-		
-		System.out.println("Project Table Window");
-
-		loader.setLocation( boe_tool.class.getResource("view/projectList.fxml") );
-		AnchorPane rootLayout = null;
 		try {
-			rootLayout = (AnchorPane) loader.load();
+			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/projectList.fxml"));
+			System.out.println("Project Table Window");
+			listPane.getChildren().setAll(pane);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		listPane.getChildren().setAll(rootLayout);
-		
+		}		
 	}
 }

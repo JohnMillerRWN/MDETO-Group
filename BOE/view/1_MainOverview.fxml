@@ -12,13 +12,10 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.MainOverviewController">
+<VBox prefHeight="601.0" prefWidth="1067.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.MainOverviewController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -59,7 +56,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane dividerPositions="0.162426614481409, 0.7759295499021527" focusTraversable="true" prefHeight="541.0" prefWidth="790.0" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.1624413145539906, 0.7568075117370892" focusTraversable="true" prefHeight="541.0" VBox.vgrow="ALWAYS">
       <items>
         <AnchorPane prefHeight="551.0" prefWidth="165.0" SplitPane.resizableWithParent="false">
           <children>
@@ -149,39 +146,41 @@
                   </Accordion>
           </children>
         </AnchorPane>
-        <ScrollPane fx:id="rootPane" prefHeight="533.0" prefWidth="663.0">
+        <ScrollPane fx:id="rootPane">
           <content>
-            <AnchorPane id="Content" fx:id="switchPane" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="633.0">
+            <AnchorPane id="Content" fx:id="switchPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0">
               <children>
-                <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" wrapText="false">
+                <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
                            <font>
                       <Font size="18.0" fx:id="x1" />
-                           </font>
-                           <textFill>
-                      <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
-                           </textFill></Label>
+                           </font></Label>
               </children>
             </AnchorPane>
           </content>
         </ScrollPane>
-            <ScrollPane fx:id="branchPane" prefHeight="539.0" prefWidth="196.0">
+            <ScrollPane fx:id="branchPane" fitToWidth="true">
                <content>
-                  <AnchorPane fx:id="listPane" />
+                  <AnchorPane fx:id="listPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" text="List" textFill="#9f9f9f">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
                </content>
             </ScrollPane>
       </items>
     </SplitPane>
-    <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
-      <children>
-        <Pane prefHeight="40.0" prefWidth="776.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Button mnemonicParsing="false" text="Submit Updates" />
-                  <Label fx:id="user_Label" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="856.0" layoutY="6.0" text="User" textAlignment="RIGHT" />
-               </children></Pane>
-      </children>
-      <padding>
-        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-      </padding>
-    </HBox>
+      <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="30.0">
+         <children>
+            <Button mnemonicParsing="false" text="Submit Updates" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0" />
+            <Label fx:id="user_Label" contentDisplay="RIGHT" text="User" textAlignment="RIGHT" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </children>
+      </AnchorPane>
   </children>
 </VBox>

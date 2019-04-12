@@ -38,6 +38,7 @@ public class ProjectSummaryController {
 				startDate.setValue( LocalDate.parse(result.getString(3), dateformatter) );
 				endDate.setValue( LocalDate.parse(result.getString(4), dateformatter) );
 				prjDesc.setText(result.getString(7));
+				prjDesc.setWrapText(true);
 			}
 			
 			db.db_close();

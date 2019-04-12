@@ -6,15 +6,19 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="456.0" prefWidth="248.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.ProjectListController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.ProjectListController">
    <children>
-      <TableView fx:id="project_list" prefHeight="418.0" prefWidth="248.0">
-         <columns>
-            <TableColumn fx:id="idCol" prefWidth="48.0" text="ID" />
-            <TableColumn fx:id="nameCol" prefWidth="151.0" text="Project Name" />
-         </columns>
-      </TableView>
-      <ButtonBar layoutY="416.0" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="10.0">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="45.0">
+         <children>
+            <TableView fx:id="project_list" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+               <columns>
+                  <TableColumn fx:id="idCol" maxWidth="1.7976931348623157E308" prefWidth="48.0" text="ID" />
+                  <TableColumn fx:id="nameCol" maxWidth="1.7976931348623157E308" prefWidth="151.0" text="Project Name" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <ButtonBar buttonMinWidth="50.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
         <buttons>
           <Button fx:id="loadButton" mnemonicParsing="false" onAction="#getProjectFromList" text="Load" />
         </buttons>

@@ -3,8 +3,9 @@ package BOE.view;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+
 import BOE.util.db_import;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -51,6 +52,7 @@ public class ProjectListController {
 			while(result.next()) {
 				list.add( new Project(result.getInt(1), result.getString(2)) );
 			}
+			Collections.reverse(list);
 			
 			db.db_close();
 			return list;
