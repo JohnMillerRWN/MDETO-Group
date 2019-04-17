@@ -29,7 +29,7 @@ CREATE TABLE project (
 
 CREATE TABLE clin (
 	clin_id INT UNIQUE AUTO_INCREMENT,
-    clin_name VARCHAR(255) NOT NULL,
+    clin_num INT NOT NULL,
     start_date DATE,												# date format is YYYY-MM-DD
     end_date DATE,													# date format is YYYY-MM-DD
     created_date DATETIME DEFAULT CURRENT_TIMESTAMP,				# datetime format is YYYY-MM-DD HH:MM:SS
@@ -104,9 +104,23 @@ INSERT INTO project ( project_name, start_date, end_date, project_manager, short
 INSERT INTO project ( project_name, start_date, end_date, project_manager, short_desc )
    VALUES ( 'Bee Movie', '2007-11-02', '2007-11-02', 3, "According to all known laws \nof aviation, \nthere is no way a bee \nshould be able to fly. \nIts wings are too small to get \nits fat little body off the ground. \nThe bee, of course, flies anyway \nbecause bees don't care \nwhat humans think is impossible. \nYellow, black. Yellow, black. \nYellow, black. Yellow, black. \nOoh, black and yellow! \nLet's shake it up a little. \nBarry! Breakfast is ready!");
 
-INSERT INTO clin ( clin_name, start_date, end_date, project_id, short_desc )
-	VALUES( 'clin1', '2013-05-01', '2020-05-11', 1, 'Contract Line Item (CLIN) 1');
-INSERT INTO clin ( clin_name, start_date, end_date, project_id, short_desc )
-	VALUES( 'clin2', '2011-08-11', '2020-05-16', 2, 'Contract Line Item (CLIN) 2');
-INSERT INTO clin ( clin_name, start_date, end_date, project_id, short_desc )
-	VALUES( 'clin3', '2020-05-16', '2023-05-16', 2, 'Contract Line Item (CLIN) 3');
+INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
+	VALUES( 1, '2013-05-01', '2020-05-11', 1, 'Contract Line Item (CLIN) 1');
+INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
+	VALUES( 2, '2011-08-11', '2020-05-16', 2, 'Contract Line Item (CLIN) 2');
+INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
+	VALUES( 3, '2020-05-16', '2023-05-16', 2, 'Contract Line Item (CLIN) 3');
+INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
+	VALUES( 4, '2020-05-16', '2023-05-16', 3, 'Contract Line Item (CLIN) 4');
+INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
+	VALUES( 5, '2020-05-16', '2023-05-16', 4, 'Contract Line Item (CLIN) 5');
+INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
+	VALUES( 6, '2020-05-16', '2023-05-16', 4, 'Contract Line Item (CLIN) 6');
+INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
+	VALUES( 7, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 7');
+INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
+	VALUES( 8, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 8');
+INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
+	VALUES( 9, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 9');
+INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
+	VALUES( 10, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 10');

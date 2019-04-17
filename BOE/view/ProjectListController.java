@@ -34,10 +34,12 @@ public class ProjectListController {
 	
 	@FXML
 	private void getProjectFromList() {
-		int project_id = project_list.getSelectionModel().getSelectedItem().getId();
+		ProjectTable project = project_list.getSelectionModel().getSelectedItem();
+		int project_id = project.getId();
+		String project_name = project.getName();
 		
 		//sends Project ID to EventBus
-		boe_tool.eventBus.post(new ProjectChangeEvent(project_id));
+		boe_tool.eventBus.post(new ProjectChangeEvent(project_id, project_name));
 	}
 	
 	private void loadProjectList() {

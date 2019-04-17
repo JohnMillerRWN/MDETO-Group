@@ -35,7 +35,8 @@ public class ProjectSummaryController implements Subscriber {
 	private ObservableList<CLINTable> data = FXCollections.observableArrayList();
 
 	@FXML private TableView<CLINTable> productTable;
-	@FXML private TableColumn<CLINTable, String> clinCol;
+	@FXML private TableColumn<CLINTable, Integer> clinCol;
+	@FXML private TableColumn<CLINTable, String> descCol;
 	@FXML private TableColumn<CLINTable, String> startCol;
 	@FXML private TableColumn<CLINTable, String> endCol;
 	
@@ -81,7 +82,8 @@ public class ProjectSummaryController implements Subscriber {
 	}
 	
 	private void loadCLINTable() {
-		clinCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("name"));
+		clinCol.setCellValueFactory(new PropertyValueFactory<CLINTable, Integer>("clin"));
+		descCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("name"));
 		startCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("startDate"));
 		endCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("endDate"));
 		
@@ -95,10 +97,10 @@ public class ProjectSummaryController implements Subscriber {
 		db.db_open();
 
 		try {
-			result = db.query("SELECT clin_name, start_date, end_date FROM clin WHERE project_id = " + 	curr_proj);
+			result = db.query("SELECT clin_num, short_desc, start_date, end_date FROM clin WHERE project_id = " + 	curr_proj);
 
 			while(result.next()) {
-				list.add( new CLINTable(result.getString(1), result.getString(2), result.getString(3)) );
+				list.add( new CLINTable(result.getInt(1), result.getString(2), result.getString(3), result.getString(4)) );
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -118,20 +120,30 @@ public class ProjectSummaryController implements Subscriber {
 	}
 	
 	public class CLINTable {
-		private String name, startDate, endDate;
+		private Integer clin;
+		private String desc, startDate, endDate;
 		
-		public CLINTable(String name, String startDate, String endDate) {
-			this.name = name;
+		public CLINTable(Integer clin, String desc, String startDate, String endDate) {
+			this.setClin(clin);
+			this.desc = desc;
 			this.startDate = startDate;
 			this.endDate = endDate;
 		}
 		
+		public Integer getClin() {
+			return clin;
+		}
+
+		public void setClin(Integer clin) {
+			this.clin = clin;
+		}
+
 		public String getName() {
-			return name;
+			return desc;
 		}
 
 		public void setName(String name) {
-			this.name = name;
+			this.desc = name;
 		}
 
 		public String getStartDate() {

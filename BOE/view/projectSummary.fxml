@@ -24,15 +24,15 @@
       <TextArea fx:id="prjDesc" layoutX="409.0" layoutY="100.0" prefHeight="71.0" prefWidth="149.0" promptText="Project Description" />
       <TableView fx:id="productTable" layoutX="32.0" layoutY="186.0" prefHeight="200.0" prefWidth="533.0">
         <columns>
-          <TableColumn fx:id="clinCol" prefWidth="288.0" text="CLIN" />
-          <TableColumn fx:id="startCol" prefWidth="122.0" text="Start Date" />
-            <TableColumn fx:id="endCol" prefWidth="122.0" text="End Date" />
+          <TableColumn fx:id="clinCol" prefWidth="43.0" text="CLIN" />
+            <TableColumn fx:id="descCol" prefWidth="334.0" text="Description" />
+          <TableColumn fx:id="startCol" prefWidth="77.0" text="Start Date" />
+            <TableColumn fx:id="endCol" prefWidth="78.0" text="End Date" />
         </columns>
       </TableView>
       <ButtonBar layoutX="365.0" layoutY="386.0" prefHeight="40.0" prefWidth="200.0">
         <buttons>
-            <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
-          <Button fx:id="saveButton" mnemonicParsing="false" text="Save" />
+          <Button fx:id="loadButton" mnemonicParsing="false" text="Load" />
         </buttons>
       </ButtonBar>
    </children>

@@ -90,21 +90,8 @@ public class MainOverviewController implements Subscriber {
 		}
 	}
 	
-	private void setProject(int id) {
-		db.db_open();
-
-		try {
-			result = db.query("SELECT project_name FROM project WHERE project_id = " + id);
-
-			while(result.next()) {
-				prjLabel.setText(result.getString(1));
-			}
-			
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		} finally {
-			db.db_close();
-		}
+	private void setProject(String name) {
+		prjLabel.setText(name);
 	}
 	
 	/**
@@ -113,6 +100,6 @@ public class MainOverviewController implements Subscriber {
 	 */
 	@Subscribe
 	public void reloadProject(ProjectChangeEvent event) {
-		setProject( event.getProject_id() );
+		setProject( event.getProject_name() );
 	}
 }
