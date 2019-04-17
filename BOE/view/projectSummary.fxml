@@ -16,18 +16,17 @@
       <TextField fx:id="prjName" layoutX="32.0" layoutY="28.0" promptText="Project Name" />
       <TextField fx:id="propNumber" layoutX="210.0" layoutY="28.0" promptText="Proposal Number" />
       <TextField fx:id="prjManager" layoutX="412.0" layoutY="28.0" promptText="Project Manager" />
-      <Label fx:id="pop" layoutX="32.0" layoutY="63.0" text="Period of Performance" />
+      <Label fx:id="pop" layoutX="32.0" layoutY="63.0" text="PoP: " />
       <DatePicker fx:id="startDate" layoutX="210.0" layoutY="59.0" promptText="Start Date" />
       <DatePicker fx:id="endDate" layoutX="412.0" layoutY="59.0" promptText="End Date" />
       <ComboBox layoutX="32.0" layoutY="99.0" prefWidth="150.0" promptText="Default Rate Pool" />
       <ComboBox layoutX="210.0" layoutY="99.0" prefWidth="150.0" promptText="Default Spread" />
-      <ComboBox fx:id="product" layoutX="32.0" layoutY="149.0" prefWidth="150.0" promptText="Product" />
-      <Button fx:id="addProductButton" layoutX="210.0" layoutY="149.0" mnemonicParsing="false" text="Add Product" />
       <TextArea fx:id="prjDesc" layoutX="409.0" layoutY="100.0" prefHeight="71.0" prefWidth="149.0" promptText="Project Description" />
       <TableView fx:id="productTable" layoutX="32.0" layoutY="186.0" prefHeight="200.0" prefWidth="533.0">
         <columns>
-          <TableColumn fx:id="productCol" prefWidth="339.0" text="Product" />
-          <TableColumn fx:id="hoursCol" minWidth="2.0" prefWidth="193.0" text="Current Hours" />
+          <TableColumn fx:id="clinCol" prefWidth="288.0" text="CLIN" />
+          <TableColumn fx:id="startCol" prefWidth="122.0" text="Start Date" />
+            <TableColumn fx:id="endCol" prefWidth="122.0" text="End Date" />
         </columns>
       </TableView>
       <ButtonBar layoutX="365.0" layoutY="386.0" prefHeight="40.0" prefWidth="200.0">

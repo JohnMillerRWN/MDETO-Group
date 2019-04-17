@@ -10,6 +10,7 @@ public class SharedResources {
 	private User current_user;
 	private ArrayList<Project_BOE> project_list = new ArrayList<Project_BOE>();
 	private db_import db = new db_import();
+	private ResultSet result;
 
 	public void setUser(User c_user) {
 		this.current_user = c_user;
@@ -20,9 +21,7 @@ public class SharedResources {
 	}
 
 	public boolean fillDBProjectList() {
-		ResultSet result;
-		Project_BOE temp_proj;
-
+		boolean listFilled = false;
 		db.db_open();
 		
 		try {
@@ -36,20 +35,18 @@ public class SharedResources {
 										 result.getString(7))
 						);
 			}
-			
-			db.db_close();
-			return true;
+			listFilled = true;
 		} catch (Exception e) {
-			System.out.println(e.getMessage()); 
-			
+			System.out.println(e.getMessage()); 			
 			db.db_close();
-			return false;
 		}
+		finally {
+			db.db_close();
+		}
+		return listFilled;
 	}
 	
 	public ArrayList<Project_BOE> getProjectList() {
 		return this.project_list;
 	}
-
-
 }

@@ -3,10 +3,6 @@ package BOE.view;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
-
-import com.google.common.eventbus.EventBus;
-
 import BOE.boe_tool;
 import BOE.events.ProjectChangeEvent;
 import BOE.util.db_import;
@@ -22,23 +18,18 @@ public class ProjectListController {
 
 	private db_import db = new db_import();
 	private ResultSet result;
-	private ArrayList<Project> list = new ArrayList<Project>();
-	private ObservableList<Project> data;
+	private ArrayList<ProjectTable> list = new ArrayList<ProjectTable>();
+	private ObservableList<ProjectTable> data = FXCollections.observableArrayList();
 
-	@FXML private TableView<Project> project_list;
-	@FXML private TableColumn<Project, Integer> idCol;
-	@FXML private TableColumn<Project, String> nameCol;
+	@FXML private TableView<ProjectTable> project_list;
+	@FXML private TableColumn<ProjectTable, Integer> idCol;
+	@FXML private TableColumn<ProjectTable, String> nameCol;
 	@FXML private Button loadButton;
 
 
 	@FXML
 	private void initialize() {
-		idCol.setCellValueFactory(new PropertyValueFactory<Project, Integer>("id"));
-		nameCol.setCellValueFactory(new PropertyValueFactory<Project, String>("name"));
-		
-		data = FXCollections.observableArrayList( parseProjectList() );
-		
-		project_list.getItems().setAll(data);
+		loadProjectList();
 	}
 	
 	@FXML
@@ -49,47 +40,55 @@ public class ProjectListController {
 		boe_tool.eventBus.post(new ProjectChangeEvent(project_id));
 	}
 	
- 	private ArrayList<Project> parseProjectList() {
+	private void loadProjectList() {
+		idCol.setCellValueFactory(new PropertyValueFactory<ProjectTable, Integer>("id"));
+		nameCol.setCellValueFactory(new PropertyValueFactory<ProjectTable, String>("name"));
+		
+		data = FXCollections.observableArrayList( parseProjectList() );
+		
+		project_list.getItems().setAll(data);
+	}
+	
+ 	private ArrayList<ProjectTable> parseProjectList() {
+ 		list.clear();
 		db.db_open();
 
 		try {
 			result = db.query("SELECT project_id, project_name FROM project ORDER BY project_id DESC");
 
 			while(result.next()) {
-				list.add( new Project(result.getInt(1), result.getString(2)) );
+				list.add( new ProjectTable(result.getInt(1), result.getString(2)) );
 			}
-			
-			db.db_close();
-			return list;
 		} catch (SQLException e) {
-			db.db_close();
 			System.out.println(e.getMessage());
-			return list;
+		} finally {
+			db.db_close();
 		}
+		return list;
 	}
 
-	public class Project {
+	public class ProjectTable {
 		private Integer id;
 		private String name;
 
-		private Project(int idIn, String nameIn) {
-			id = idIn;
-			name = nameIn;
+		private ProjectTable(int id, String name) {
+			this.id = id;
+			this.name = name;
 		}
 		
 		public Integer getId() {
 			return id;
 		}
 		
-		public void setId(Integer idIn) {
-			id = idIn; 
+		public void setId(Integer id) {
+			this.id = id; 
 		}
 		
 		public String getName() {
 			return name;
 		}
-		public void setName(String nameIn) {
-			name = nameIn;
+		public void setName(String name) {
+			this.name = name;
 		}
 		
 		public String toString() {
