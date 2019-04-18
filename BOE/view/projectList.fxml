@@ -6,21 +6,21 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.ProjectListController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.ProjectListController">
    <children>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="45.0">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="project_list" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <TableView fx:id="project_list" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <columns>
-                  <TableColumn fx:id="idCol" maxWidth="1.7976931348623157E308" prefWidth="48.0" text="ID" />
-                  <TableColumn fx:id="nameCol" maxWidth="1.7976931348623157E308" prefWidth="151.0" text="Project Name" />
+                  <TableColumn fx:id="idCol" maxWidth="1.7976931348623157E308" prefWidth="30.0" resizable="false" text="ID" />
+                  <TableColumn fx:id="nameCol" maxWidth="1.7976931348623157E308" prefWidth="168.0" text="Project Name" />
                </columns>
             </TableView>
          </children>
       </AnchorPane>
-      <ButtonBar buttonMinWidth="50.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <ButtonBar buttonMinWidth="50.0" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0">
         <buttons>
-          <Button fx:id="loadButton" mnemonicParsing="false" onAction="#getProjectFromList" text="Load" />
+          <Button fx:id="loadButton" mnemonicParsing="false" onAction="#getProjectFromList" text="Load Project" />
         </buttons>
       </ButtonBar>
    </children>

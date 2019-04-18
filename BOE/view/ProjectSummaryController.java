@@ -1,12 +1,11 @@
 package BOE.view;
 
-import java.net.URL;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 import com.google.common.eventbus.Subscribe;
 import BOE.boe_tool;
 import BOE.events.ProjectChangeEvent;
@@ -15,7 +14,7 @@ import BOE.util.db_import;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -23,13 +22,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 public class ProjectSummaryController implements Subscriber {
-	
+
+	private int curr_proj = boe_tool.shared.getProject();
+	private int curr_clin = boe_tool.shared.getCLIN();
+
 	private db_import db = new db_import();
 	private ResultSet result;
 	private DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	private int curr_proj = 0;
 	
 	private ArrayList<CLINTable> list = new ArrayList<CLINTable>();
 	private ObservableList<CLINTable> data = FXCollections.observableArrayList();
@@ -40,14 +42,24 @@ public class ProjectSummaryController implements Subscriber {
 	@FXML private TableColumn<CLINTable, String> startCol;
 	@FXML private TableColumn<CLINTable, String> endCol;
 	
+	@FXML private AnchorPane projectListPane;
 	@FXML private TextField prjName, propNumber, prjManager;
 	@FXML private Label pop;
 	@FXML private DatePicker startDate, endDate;
 	@FXML private TextArea prjDesc;
 	
 	public void initialize() {
+		
+		//loads current project if there is any
+		if (curr_proj>0) {
+			setProject(curr_proj);
+		}
+		
 		//registers class with EventBus for listener
 		boe_tool.eventBus.register(this);
+		
+		//loads project List
+		loadProjectList();
 	}
 	
 	private void setProject(int id) {
@@ -71,7 +83,9 @@ public class ProjectSummaryController implements Subscriber {
 			db.db_close();
 		}
 		
+		//sets current project variables locally and in shared resources
 		curr_proj = id;
+		boe_tool.shared.setProject(id);
 		
 		clearCLINTable();
 		loadCLINTable();
@@ -83,6 +97,8 @@ public class ProjectSummaryController implements Subscriber {
 	
 	private void loadCLINTable() {
 		clinCol.setCellValueFactory(new PropertyValueFactory<CLINTable, Integer>("clin"));
+		clinCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		
 		descCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("name"));
 		startCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("startDate"));
 		endCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("endDate"));
@@ -108,6 +124,17 @@ public class ProjectSummaryController implements Subscriber {
 			db.db_close();
 		}
 		return list;
+	}
+	
+	
+	public void loadProjectList() {
+		try {
+			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/projectList.fxml"));
+			projectListPane.getChildren().setAll(pane);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**

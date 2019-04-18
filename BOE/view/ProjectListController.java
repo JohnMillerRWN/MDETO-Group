@@ -44,6 +44,8 @@ public class ProjectListController {
 	
 	private void loadProjectList() {
 		idCol.setCellValueFactory(new PropertyValueFactory<ProjectTable, Integer>("id"));
+		idCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		
 		nameCol.setCellValueFactory(new PropertyValueFactory<ProjectTable, String>("name"));
 		
 		data = FXCollections.observableArrayList( parseProjectList() );

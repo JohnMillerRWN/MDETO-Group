@@ -11,10 +11,13 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="601.0" prefWidth="1067.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.MainOverviewController">
+<VBox prefHeight="601.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.MainOverviewController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -55,7 +58,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane dividerPositions="0.1624413145539906, 0.7568075117370892" focusTraversable="true" prefHeight="541.0" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.1624413145539906" focusTraversable="true" prefHeight="541.0" VBox.vgrow="ALWAYS">
       <items>
         <AnchorPane prefHeight="551.0" prefWidth="165.0" SplitPane.resizableWithParent="false">
           <children>
@@ -147,7 +150,7 @@
         </AnchorPane>
         <ScrollPane fx:id="rootPane">
           <content>
-            <AnchorPane id="Content" fx:id="switchPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-1.0" minWidth="-1.0">
+            <AnchorPane id="Content" fx:id="switchPane" minHeight="-1.0" minWidth="-1.0">
               <children>
                 <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
                            <font>
@@ -157,28 +160,30 @@
             </AnchorPane>
           </content>
         </ScrollPane>
-            <ScrollPane fx:id="branchPane" fitToWidth="true">
-               <content>
-                  <AnchorPane fx:id="listPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                     <children>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" text="List" textFill="#9f9f9f">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children></AnchorPane>
-               </content>
-            </ScrollPane>
       </items>
     </SplitPane>
       <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="30.0">
          <children>
             <Label fx:id="userLabel" text="User" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0" />
-            <Label fx:id="prjLabel" contentDisplay="RIGHT" text="Project" textAlignment="RIGHT" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Label>
+            <GridPane alignment="CENTER_RIGHT" hgap="10.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="prjLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Project" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <Label text="|" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Label fx:id="clinLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="CLIN" textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
          </children>
       </AnchorPane>
   </children>

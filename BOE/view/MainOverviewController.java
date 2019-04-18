@@ -2,8 +2,6 @@ package BOE.view;
 
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
 import com.google.common.eventbus.Subscribe;
 import BOE.boe_tool;
 import BOE.events.ProjectChangeEvent;
@@ -19,10 +17,10 @@ import javafx.scene.control.Label;
 public class MainOverviewController implements Subscriber {
 	private db_import db = new db_import();
 	private ResultSet result;
-	private int curr_proj = 0;
+	private int curr_proj = -1;
 
 	@FXML Label userLabel, prjLabel;
-	@FXML AnchorPane switchPane, listPane;
+	@FXML AnchorPane switchPane;
 	@FXML Accordion BOEA;
 	@FXML TitledPane project, product, radar, dm, management, reports;	
 
@@ -34,7 +32,7 @@ public class MainOverviewController implements Subscriber {
 		userLabel.setText( boe_tool.shared.getUser().getFull_name() );
 		BOEA.setExpandedPane(project);
 		setProjectSummary();
-		setProjectTbl();
+		//setProjectTbl();
 	}
 
 	@FXML
@@ -66,9 +64,10 @@ public class MainOverviewController implements Subscriber {
 		switchPaneView("view/SOWRefControl.fxml");
 	}
 	
+	/*
 	public void setProjectTbl() {
 		listPaneView("view/projectList.fxml");		
-	}
+	}*/
 	
 	public void switchPaneView(String resource_path) {
 		try {
@@ -80,6 +79,7 @@ public class MainOverviewController implements Subscriber {
 		}
 	}
 	
+	/*
 	public void listPaneView(String resource_path) {
 		try {
 			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource(resource_path));
@@ -88,7 +88,7 @@ public class MainOverviewController implements Subscriber {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	private void setProject(String name) {
 		prjLabel.setText(name);

@@ -124,3 +124,45 @@ INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
 	VALUES( 9, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 9');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
 	VALUES( 10, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 10');
+
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 1, 'Radar for CLIN 1');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 1, 'DM for CLIN 1');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 2, 'Radar for CLIN 2');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 2, 'DM for CLIN 2');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 3, 'Radar for CLIN 3');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 3, 'DM for CLIN 3');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 4, 'Radar for CLIN 4');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 4, 'DM for CLIN 4');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 5, 'Radar for CLIN 5');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 5, 'DM for CLIN 5');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 6, 'Radar for CLIN 6');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 6, 'DM for CLIN 6');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 7, 'Radar for CLIN 7');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 7, 'DM for CLIN 7');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 8, 'Radar for CLIN 8');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 8, 'DM for CLIN 8');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 9, 'Radar for CLIN 9');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 9, 'DM for CLIN 9');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 10, 'Radar for CLIN 10');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 10, 'DM for CLIN 10');
+
