@@ -8,6 +8,7 @@ import BOE.events.ProjectChangeEvent;
 import BOE.util.db_import;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class ProjectListController {
 
@@ -32,6 +34,7 @@ public class ProjectListController {
 	@FXML
 	private void initialize() {
 		loadProjectList();
+		listDoubleClick();
 	}
 	
 	@FXML
@@ -88,6 +91,18 @@ public class ProjectListController {
         alert.setContentText("Please select a Project from the list.");
  
         alert.showAndWait();
+ 	}
+ 	
+ 	private void listDoubleClick() {
+		//adds doubleclick listener for list
+		project_list.setOnMousePressed(new EventHandler<MouseEvent>() {
+		    @Override 
+		    public void handle(MouseEvent event) {
+		        if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+		        	getProjectFromList();          
+		        }
+		    }
+		});
  	}
  	
 	public class ProjectTable {

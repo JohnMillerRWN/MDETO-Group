@@ -109,6 +109,13 @@ public class MainOverviewController implements Subscriber {
 			
 			//p.getContent();
 		}
+		
+		//clears list
+		list.clear();
+	}
+	
+	private void clearOrgs() {
+		productAccordion.getPanes().clear();
 	}
 	
 	/**
@@ -119,7 +126,7 @@ public class MainOverviewController implements Subscriber {
 	public void reloadProject(ProjectChangeEvent event) {
 		prjLabel.setText(event.getProject_name());
 		clinLabel.setText("CLIN");
-		
+		clearOrgs();
 	}
 	
 	/**
@@ -132,6 +139,7 @@ public class MainOverviewController implements Subscriber {
 		
 		clinLabel.setText( Integer.toString(clin_num) );
 		
+		clearOrgs();
 		getOrgs(clin_num);
 	}
 }

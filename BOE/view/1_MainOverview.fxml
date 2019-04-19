@@ -76,7 +76,7 @@
                               </VBox>
                            </content>
                         </TitledPane>
-                        <TitledPane fx:id="product" animated="false" layoutX="10.0" layoutY="10.0" text="Product">
+                        <TitledPane fx:id="product" animated="false" layoutX="10.0" layoutY="10.0" text="Org / Product">
                            <content>
                               <Accordion fx:id="productAccordion">
                                  <padding>

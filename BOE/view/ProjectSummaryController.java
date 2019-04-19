@@ -14,6 +14,7 @@ import BOE.events.Subscriber;
 import BOE.util.db_import;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -25,12 +26,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class ProjectSummaryController implements Subscriber {
 
 	private int curr_proj = boe_tool.shared.getProject();
-	private int curr_clin = boe_tool.shared.getCLIN();
 
 	private db_import db = new db_import();
 	private ResultSet result;
@@ -63,6 +64,8 @@ public class ProjectSummaryController implements Subscriber {
 		
 		//loads project List
 		loadProjectList();
+
+		clinListDoubleClick();
 	}
 	
 	private void setProject(int id) {
@@ -129,7 +132,6 @@ public class ProjectSummaryController implements Subscriber {
 		return list;
 	}
 	
-	
 	public void loadProjectList() {
 		try {
 			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/projectList.fxml"));
@@ -168,7 +170,19 @@ public class ProjectSummaryController implements Subscriber {
         alert.showAndWait();
  	}
 	
-	/**
+ 	private void clinListDoubleClick() {
+		//adds doubleclick listener for list
+ 		clinTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+		    @Override 
+		    public void handle(MouseEvent event) {
+		        if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+		        	getCLINFromList();          
+		        }
+		    }
+		});
+ 	}
+ 	
+ 	/**
 	 * Listener for EventBus. When triggered the Project will be reloaded to the id provided
 	 * @param event requires a ProjectChangeEvent
 	 */
