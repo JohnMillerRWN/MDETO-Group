@@ -130,6 +130,8 @@ INSERT INTO org ( org_name, clin_id, detailed_org )
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 1, 'DM for CLIN 1');
 INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Test', 1, 'Test for CLIN 1');
+INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'Radar', 2, 'Radar for CLIN 2');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 2, 'DM for CLIN 2');

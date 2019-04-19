@@ -2,6 +2,9 @@ package BOE.view;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import com.google.common.eventbus.Subscribe;
 import BOE.boe_tool;
 import BOE.events.CLINChangeEvent;
@@ -11,6 +14,7 @@ import BOE.util.db_import;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
@@ -23,8 +27,10 @@ public class MainOverviewController implements Subscriber {
 	@FXML Label userLabel, prjLabel, clinLabel;
 	@FXML AnchorPane switchPane;
 	@FXML Accordion BOEA, productAccordion;
-	@FXML TitledPane project, product, management, reports;	
-
+	@FXML TitledPane project, product, management, reports;
+	
+	private ArrayList<TitledPane> list = new ArrayList<TitledPane>();
+	
 	@FXML
 	private void initialize() {
 		//registers class with EventBus for listener
@@ -77,10 +83,33 @@ public class MainOverviewController implements Subscriber {
 		}
 	}
 	
-	public void addOrgs() {
+	/**
+	 * Queries the org table to populate the Product Accordion Menu
+	 * @param clin_id id of the clin to query the org table
+	 */
+	private void getOrgs(int clin_id) {
+		db.db_open();
+
+		try {
+			result = db.query("SELECT org_id, org_name, detailed_org FROM org WHERE clin_id = " + clin_id);
+
+			while(result.next()) {
+				
+				list.add( new TitledPane( result.getString(2), new VBox() ));
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			db.db_close();
+		}
 		
+		//adds the list to the Product Accordion Menu
+		for (TitledPane p : list) {
+			productAccordion.getPanes().add(p);
+			
+			//p.getContent();
+		}
 	}
-	
 	
 	/**
 	 * Listener for EventBus. When triggered the Project will be reloaded to the id provided
@@ -90,6 +119,7 @@ public class MainOverviewController implements Subscriber {
 	public void reloadProject(ProjectChangeEvent event) {
 		prjLabel.setText(event.getProject_name());
 		clinLabel.setText("CLIN");
+		
 	}
 	
 	/**
@@ -98,6 +128,10 @@ public class MainOverviewController implements Subscriber {
 	 */
 	@Subscribe
 	public void reloadCLIN(CLINChangeEvent event) {
-		clinLabel.setText( Integer.toString(event.getClin_num()) );
+		int clin_num = event.getClin_num();
+		
+		clinLabel.setText( Integer.toString(clin_num) );
+		
+		getOrgs(clin_num);
 	}
 }

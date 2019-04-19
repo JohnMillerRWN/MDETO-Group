@@ -78,7 +78,10 @@
                         </TitledPane>
                         <TitledPane fx:id="product" animated="false" layoutX="10.0" layoutY="10.0" text="Product">
                            <content>
-                              <Accordion fx:id="productAccordion" />
+                              <Accordion fx:id="productAccordion">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding></Accordion>
                            </content>
                         </TitledPane>
                       <TitledPane fx:id="management" animated="false" text="Managment View">
