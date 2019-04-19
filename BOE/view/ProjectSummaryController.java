@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import com.google.common.eventbus.Subscribe;
 import BOE.boe_tool;
+import BOE.events.CLINChangeEvent;
 import BOE.events.ProjectChangeEvent;
 import BOE.events.Subscriber;
 import BOE.util.db_import;
@@ -36,7 +37,7 @@ public class ProjectSummaryController implements Subscriber {
 	private ArrayList<CLINTable> list = new ArrayList<CLINTable>();
 	private ObservableList<CLINTable> data = FXCollections.observableArrayList();
 
-	@FXML private TableView<CLINTable> productTable;
+	@FXML private TableView<CLINTable> clinTable;
 	@FXML private TableColumn<CLINTable, Integer> clinCol;
 	@FXML private TableColumn<CLINTable, String> descCol;
 	@FXML private TableColumn<CLINTable, String> startCol;
@@ -92,20 +93,20 @@ public class ProjectSummaryController implements Subscriber {
 	}
 	
 	private void clearCLINTable() {
-		productTable.getItems().clear();;
+		clinTable.getItems().clear();
 	}
 	
 	private void loadCLINTable() {
-		clinCol.setCellValueFactory(new PropertyValueFactory<CLINTable, Integer>("clin"));
+		clinCol.setCellValueFactory(new PropertyValueFactory<CLINTable, Integer>("clinNum"));
 		clinCol.setStyle("-fx-alignment: CENTER-RIGHT;");
 		
-		descCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("name"));
+		descCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("desc"));
 		startCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("startDate"));
 		endCol.setCellValueFactory(new PropertyValueFactory<CLINTable, String>("endDate"));
 		
 		data = FXCollections.observableArrayList( parseCLINList() );
 		
-		productTable.getItems().setAll(data);
+		clinTable.getItems().setAll(data);
 	}
 	
 	private ArrayList<CLINTable> parseCLINList() {
@@ -113,10 +114,10 @@ public class ProjectSummaryController implements Subscriber {
 		db.db_open();
 
 		try {
-			result = db.query("SELECT clin_num, short_desc, start_date, end_date FROM clin WHERE project_id = " + 	curr_proj);
+			result = db.query("SELECT clin_id, clin_num, short_desc, start_date, end_date FROM clin WHERE project_id = " + 	curr_proj);
 
 			while(result.next()) {
-				list.add( new CLINTable(result.getInt(1), result.getString(2), result.getString(3), result.getString(4)) );
+				list.add( new CLINTable(result.getInt(1), result.getInt(2), result.getString(3), result.getString(4), result.getString(5)) );
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -137,6 +138,19 @@ public class ProjectSummaryController implements Subscriber {
 		}
 	}
 	
+	@FXML
+	private void getCLINFromList() {
+		CLINTable clin = clinTable.getSelectionModel().getSelectedItem();
+		int clin_id = clin.getId();
+		int clin_num = clin.getClinNum();
+		String clin_desc = clin.getDesc();
+		
+		//sends Project ID to EventBus
+		boe_tool.eventBus.post(new CLINChangeEvent(clin_id, clin_num, clin_desc));
+		//adds CLIN ID to SharedResources
+		boe_tool.shared.setCLIN(clin_id);
+	}
+	
 	/**
 	 * Listener for EventBus. When triggered the Project will be reloaded to the id provided
 	 * @param event requires a ProjectChangeEvent
@@ -147,29 +161,38 @@ public class ProjectSummaryController implements Subscriber {
 	}
 	
 	public class CLINTable {
-		private Integer clin;
+		private Integer id, clinNum;
 		private String desc, startDate, endDate;
 		
-		public CLINTable(Integer clin, String desc, String startDate, String endDate) {
-			this.setClin(clin);
+		public CLINTable(Integer id, Integer clinNum, String desc, String startDate, String endDate) {
+			this.id = id;
+			this.clinNum = clinNum;
 			this.desc = desc;
 			this.startDate = startDate;
 			this.endDate = endDate;
 		}
 		
-		public Integer getClin() {
-			return clin;
+		public Integer getId() {
+			return id;
+		}
+		
+		public void setId(Integer id) {
+			this.id = id;
+		}
+		
+		public Integer getClinNum() {
+			return clinNum;
 		}
 
-		public void setClin(Integer clin) {
-			this.clin = clin;
+		public void setClinNum(Integer clin) {
+			this.clinNum = clin;
 		}
 
-		public String getName() {
+		public String getDesc() {
 			return desc;
 		}
 
-		public void setName(String name) {
+		public void setDesc(String name) {
 			this.desc = name;
 		}
 

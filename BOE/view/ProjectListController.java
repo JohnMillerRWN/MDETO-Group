@@ -40,6 +40,8 @@ public class ProjectListController {
 		
 		//sends Project ID to EventBus
 		boe_tool.eventBus.post(new ProjectChangeEvent(project_id, project_name));
+		//adds Project ID to SharedResources
+		boe_tool.shared.setProject(project_id);
 	}
 	
 	private void loadProjectList() {

@@ -78,43 +78,7 @@
                         </TitledPane>
                         <TitledPane fx:id="product" animated="false" layoutX="10.0" layoutY="10.0" text="Product">
                            <content>
-                              <Accordion>
-                                 <panes>
-                                    <TitledPane fx:id="radar" animated="false" text="Radar">
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                       <content>
-                                          <VBox prefHeight="18.0" prefWidth="208.0">
-                                             <children>
-                                                <Label layoutX="20.0" layoutY="20.0" onMouseClicked="#setSPYPrograms" text="Overview" />
-                                                <Label text="CAM" />
-                                                <Label layoutX="20.0" layoutY="20.0" text="Functional" />
-                                                <Label layoutX="20.0" layoutY="37.0" text="Clerical" />
-                                                <Label layoutX="20.0" layoutY="54.0" text="SWCR" />
-                                                <Label layoutX="20.0" layoutY="71.0" text="..." />
-                                             </children>
-                                          </VBox>
-                                       </content>
-                                    </TitledPane>
-                                    <TitledPane fx:id="dm" animated="false" text="DM">
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                       <content>
-                                          <VBox prefHeight="18.0" prefWidth="208.0">
-                                             <children>
-                                                <Label layoutX="20.0" layoutY="71.0" text="Overview" />
-                                                <Label text="CAM" />
-                                                <Label layoutX="20.0" layoutY="20.0" text="Functional" />
-                                                <Label layoutX="20.0" layoutY="37.0" text="Clerical" />
-                                                <Label layoutX="20.0" layoutY="54.0" text="..." />
-                                             </children>
-                                          </VBox>
-                                       </content>
-                                    </TitledPane>
-                                 </panes>
-                              </Accordion>
+                              <Accordion fx:id="productAccordion" />
                            </content>
                         </TitledPane>
                       <TitledPane fx:id="management" animated="false" text="Managment View">

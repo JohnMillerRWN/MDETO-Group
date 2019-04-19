@@ -1,6 +1,6 @@
 package BOE.events;
 
-public class ProjectChangeEvent implements Postable{
+public class ProjectChangeEvent implements Postable {
 	
 	private int project_id;
 	private String project_name;

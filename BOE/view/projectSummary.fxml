@@ -54,7 +54,7 @@
                         <Insets left="35.0" right="35.0" top="18.0" />
                      </padding>
                   </GridPane>
-                  <TableView fx:id="productTable" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="536.0" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="205.0">
+                  <TableView fx:id="clinTable" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="536.0" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="205.0">
                     <columns>
                       <TableColumn fx:id="clinCol" prefWidth="42.0" text="CLIN" />
                         <TableColumn fx:id="descCol" prefWidth="336.0" text="Description" />
@@ -64,7 +64,7 @@
                   </TableView>
                   <ButtonBar prefWidth="200.0" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="32.0">
                     <buttons>
-                      <Button fx:id="loadButton" mnemonicParsing="false" text="Load CLIN" />
+                      <Button fx:id="loadButton" mnemonicParsing="false" onAction="#getCLINFromList" text="Load CLIN" />
                     </buttons>
                   </ButtonBar>
                </children>
