@@ -9,6 +9,8 @@ import BOE.util.db_import;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,6 +37,12 @@ public class ProjectListController {
 	@FXML
 	private void getProjectFromList() {
 		ProjectTable project = project_list.getSelectionModel().getSelectedItem();
+		
+		if (project==null) {
+			noProjectAlert();
+			return;
+		}
+		
 		int project_id = project.getId();
 		String project_name = project.getName();
 		
@@ -72,7 +80,16 @@ public class ProjectListController {
 		}
 		return list;
 	}
-
+ 	
+ 	private void noProjectAlert() {
+ 		Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Please select a Project from the list.");
+ 
+        alert.showAndWait();
+ 	}
+ 	
 	public class ProjectTable {
 		private Integer id;
 		private String name;
