@@ -45,10 +45,11 @@ public class CLINSummaryController {
 	@FXML private TextArea clinDesc;
 
 	public void initialize() {
+		clearProductTable();
 		//loads current project if there is any
 		if (curr_clin>0) {
 			setCLIN(curr_clin);
-		}
+		} else 
 
 		productListDoubleClick();
 	}

@@ -86,6 +86,33 @@ CREATE VIEW project_view AS
 		sys_user u ON 
 		u.user_id = p.project_manager;
 
+CREATE VIEW wrk_pkg_view AS
+	SELECT
+		w.wrk_pkg_id,
+		w.wrk_pkg_name,
+		w.start_date,
+		w.end_date,
+		CAST(w.created_date AS DATE) AS 'created_date',
+		w.pop,
+		o.org_name,
+		w.detailed_desc,
+		w.mse_wbs,
+		w.cust_wbs,
+		concat(w.first_name, ' ', w.last_name) AS 'author',
+		w.version,
+		w.scope
+	FROM
+	(
+		SELECT 
+			*
+		FROM 
+			wrk_pkg p
+		JOIN 
+			sys_user u ON 
+			u.user_id = p.author
+	) w
+	JOIN org o ON o.org_id = w.org_id;
+
 INSERT INTO sys_user ( first_name, last_name, active, project_manager )
    VALUES ('Project', 'Manager', true, true );
 INSERT INTO sys_user ( first_name, last_name, active, estimator )
@@ -168,3 +195,15 @@ INSERT INTO org ( org_name, clin_id, detailed_org )
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 10, 'DM for CLIN 10');
 
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'test package', '2020-05-16', '2023-05-16', 1, 'detailed description', 1.2, 1.2, 1, 'out of scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'test package 2', '2020-05-16', '2023-05-16', 1, 'detailed description', 1.2, 2.2, 1, 'in scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Test', '2020-05-16', '2023-05-16', 2, 'detailed description', 2.1, 2.1, 2, 'in scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Test 2', '2020-05-16', '2023-05-16', 2, 'detailed description', 2.2, 2.2, 3, 'in scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Another Test', '2020-05-16', '2023-05-16', 3, 'detailed description', 3.1, 3.1, 1, 'out of scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Another Test', '2020-05-16', '2023-05-16', 3, 'detailed description', 3.2, 3.2, 3, 'out of scope' );

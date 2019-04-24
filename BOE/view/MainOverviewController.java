@@ -12,6 +12,7 @@ import BOE.events.ProductChangeEvent;
 import BOE.events.ProjectChangeEvent;
 import BOE.events.Subscriber;
 import BOE.util.db_import;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -100,12 +101,20 @@ public class MainOverviewController implements Subscriber {
 			result = db.query("SELECT org_id, org_name, detailed_org FROM org WHERE clin_id = " + clin_id);
 
 			while(result.next()) {
-				Label label = new Label(result.getString(2));
+				Label product_name = new Label(result.getString(2));
+				int product_id = result.getInt(1);
+				list.add( product_name );
 				
-				list.add( label );
-				
+				//add listeners for labels
+				product_name.setOnMouseClicked(event -> {
+			        if (event.getClickCount() == 1) {
+			        	boe_tool.shared.setProduct(product_id);
+			        	System.out.println(product_id);
+			        }
+				});
+
 				//adds the label to the Product VBox
-				productVBox.getChildren().add( label );
+				productVBox.getChildren().add( product_name );
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -133,6 +142,11 @@ public class MainOverviewController implements Subscriber {
 	public void loadProject(ProjectChangeEvent event) {
 		prjLabel.setText(event.getProject_name());
 		clinLabel.setText("CLIN");
+		
+		
+		boe_tool.shared.setCLIN(-1);
+		boe_tool.shared.setProduct(-1);
+		
 		clearOrgs();
 		
 		setProjectSummary();
