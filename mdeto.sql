@@ -70,6 +70,18 @@ CREATE TABLE wrk_pkg (
     FOREIGN KEY (author) REFERENCES sys_user(user_id)
 );
 
+CREATE TABLE task (
+	task_id INT UNIQUE AUTO_INCREMENT,
+    task_name VARCHAR(255) NOT NULL,
+    start_date DATE,												# date format is YYYY-MM-DD
+    end_date DATE,													# date format is YYYY-MM-DD
+    created_date DATETIME DEFAULT CURRENT_TIMESTAMP,				# datetime format is YYYY-MM-DD HH:MM:SS
+    pop INT GENERATED ALWAYS AS ( datediff(end_date, start_date) ),	# period of performance in days
+    boe_formula TEXT,
+    emr TEXT, 
+    staff_hours DOUBLE
+);
+
 CREATE VIEW project_view AS 
 	SELECT 
 		p.project_id, 
@@ -206,4 +218,37 @@ INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc,
 INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
 	VALUES ( 'Another Test', '2020-05-16', '2023-05-16', 3, 'detailed description', 3.1, 3.1, 1, 'out of scope' );
 INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
-	VALUES ( 'Another Test', '2020-05-16', '2023-05-16', 3, 'detailed description', 3.2, 3.2, 3, 'out of scope' );
+	VALUES ( 'Test', '2020-05-16', '2023-05-16', 3, 'detailed description', 3.2, 3.2, 3, 'out of scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Test Package', '2020-05-16', '2023-05-16', 4, 'detailed description', 4.1, 4.1, 3, 'in scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'package', '2020-05-16', '2023-05-16', 4, 'detailed description', 4.2, 4.2, 3, 'out of scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Work Package', '2020-05-16', '2023-05-16', 5, 'detailed description', 5.1, 5.1, 3, 'unsure scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'package test', '2020-05-16', '2023-05-16', 5, 'detailed description', 5.2, 5.2, 3, 'out of scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Work Package', '2020-05-16', '2023-05-16', 6, 'detailed description', 6.1, 6.1, 3, 'unsure scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'package test', '2020-05-16', '2023-05-16', 6, 'detailed description', 6.2, 6.2, 3, 'out of scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Package', '2020-05-16', '2023-05-16', 7, 'detailed description', 7.1, 7.1, 3, 'in scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'test package', '2020-05-16', '2023-05-16', 7, 'detailed description', 7.2, 7.2, 3, 'in scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Package', '2020-05-16', '2023-05-16', 7, 'detailed description', 7.3, 7.3, 3, 'in scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'test package', '2020-05-16', '2023-05-16', 7, 'detailed description', 7.4, 7.4, 3, 'in scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Work Package', '2020-05-16', '2023-05-16', 8, 'detailed description', 8.1, 8.1, 3, 'in scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'package', '2020-05-16', '2023-05-16', 8, 'detailed description', 8.2, 8.2, 3, 'out of scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Test Package', '2020-05-16', '2023-05-16', 9, 'detailed description', 9.1, 9.1, 3, 'in scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Test Work Package', '2020-05-16', '2023-05-16', 9, 'detailed description', 9.2, 9.2, 3, 'out of scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'Test', '2020-05-16', '2023-05-16', 10, 'detailed description', 10.1, 10.1, 3, 'unknown scope' );
+INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
+	VALUES ( 'work package', '2020-05-16', '2023-05-16', 10, 'detailed description', 10.2, 10.2, 3, 'out of scope' );
+
