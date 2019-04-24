@@ -15,62 +15,47 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.ProjectSummaryController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.ProjectSummaryController">
    <children>
-      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane hgap="16.0" prefHeight="187.0" prefWidth="606.0" vgap="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="781.0" minWidth="10.0" prefWidth="605.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="195.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane fx:id="mainPane" minHeight="-Infinity" minWidth="-Infinity">
-               <children>
-                  <GridPane hgap="16.0" prefHeight="187.0" prefWidth="606.0" vgap="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="26.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <TextField fx:id="prjName" promptText="Project Name" />
-                        <TextField fx:id="propNumber" promptText="Proposal Number" GridPane.columnIndex="1" />
-                        <TextField fx:id="prjManager" promptText="Project Manager" GridPane.columnIndex="2" />
-                        <Label fx:id="pop" text="PoP: " GridPane.rowIndex="1" />
-                        <DatePicker fx:id="startDate" promptText="Start Date" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <DatePicker fx:id="endDate" promptText="End Date" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <ComboBox prefWidth="150.0" promptText="Default Rate Pool" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <ComboBox prefWidth="150.0" promptText="Default Spread" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <TextArea fx:id="prjDesc" prefHeight="71.0" prefWidth="149.0" promptText="Project Description" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                     </children>
-                     <padding>
-                        <Insets left="35.0" right="35.0" top="18.0" />
-                     </padding>
-                  </GridPane>
-                  <TableView fx:id="clinTable" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="536.0" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="205.0">
-                    <columns>
-                      <TableColumn fx:id="clinCol" prefWidth="42.0" text="CLIN" />
-                        <TableColumn fx:id="descCol" prefWidth="336.0" text="Description" />
-                      <TableColumn fx:id="startCol" prefWidth="78.0" text="Start Date" />
-                        <TableColumn fx:id="endCol" prefWidth="78.0" text="End Date" />
-                    </columns>
-                  </TableView>
-                  <ButtonBar prefWidth="200.0" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="32.0">
-                    <buttons>
-                      <Button fx:id="loadButton" mnemonicParsing="false" onAction="#getCLINFromList" text="Load CLIN" />
-                    </buttons>
-                  </ButtonBar>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="projectListPane" prefWidth="212.0" GridPane.columnIndex="1" GridPane.vgrow="ALWAYS" />
+            <TextField fx:id="prjName" promptText="Project Name" />
+            <TextField fx:id="propNumber" promptText="Proposal Number" GridPane.columnIndex="1" />
+            <TextField fx:id="prjManager" promptText="Project Manager" GridPane.columnIndex="2" />
+            <Label fx:id="pop" text="PoP: " GridPane.rowIndex="1" />
+            <DatePicker fx:id="startDate" promptText="Start Date" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="endDate" promptText="End Date" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ComboBox prefWidth="150.0" promptText="Default Rate Pool" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <ComboBox prefWidth="150.0" promptText="Default Spread" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <TextArea fx:id="prjDesc" prefHeight="71.0" prefWidth="149.0" promptText="Project Description" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
          </children>
+         <padding>
+            <Insets left="35.0" right="35.0" top="18.0" />
+         </padding>
       </GridPane>
+      <TableView fx:id="clinTable" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="536.0" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="205.0">
+        <columns>
+          <TableColumn fx:id="clinCol" prefWidth="42.0" text="CLIN" />
+            <TableColumn fx:id="descCol" prefWidth="336.0" text="Description" />
+          <TableColumn fx:id="startCol" prefWidth="78.0" text="Start Date" />
+            <TableColumn fx:id="endCol" prefWidth="78.0" text="End Date" />
+        </columns>
+      </TableView>
+      <ButtonBar AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="32.0">
+        <buttons>
+            <Button fx:id="addCLIN" mnemonicParsing="false" text="Add CLIN" />
+          <Button fx:id="loadCLIN" mnemonicParsing="false" onAction="#getCLINFromList" text="Load CLIN" />
+        </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>

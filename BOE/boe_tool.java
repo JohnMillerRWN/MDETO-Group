@@ -15,7 +15,7 @@ public class boe_tool extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("view/0_Login.fxml"));
-
+		
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("Metrics Database Estimation Tool");

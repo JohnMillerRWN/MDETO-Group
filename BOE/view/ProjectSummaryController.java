@@ -1,6 +1,5 @@
 package BOE.view;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -16,7 +15,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -46,7 +44,6 @@ public class ProjectSummaryController implements Subscriber {
 	@FXML private TableColumn<CLINTable, String> startCol;
 	@FXML private TableColumn<CLINTable, String> endCol;
 	
-	@FXML private AnchorPane projectListPane;
 	@FXML private TextField prjName, propNumber, prjManager;
 	@FXML private Label pop;
 	@FXML private DatePicker startDate, endDate;
@@ -61,9 +58,6 @@ public class ProjectSummaryController implements Subscriber {
 		
 		//registers class with EventBus for listener
 		boe_tool.eventBus.register(this);
-		
-		//loads project List
-		loadProjectList();
 
 		clinListDoubleClick();
 	}
@@ -131,17 +125,7 @@ public class ProjectSummaryController implements Subscriber {
 		}
 		return list;
 	}
-	
-	public void loadProjectList() {
-		try {
-			AnchorPane pane = FXMLLoader.load(boe_tool.class.getResource("view/projectList.fxml"));
-			projectListPane.getChildren().setAll(pane);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+		
 	@FXML
 	private void getCLINFromList() {
 		CLINTable clin = clinTable.getSelectionModel().getSelectedItem();
@@ -155,10 +139,11 @@ public class ProjectSummaryController implements Subscriber {
 		int clin_num = clin.getClinNum();
 		String clin_desc = clin.getDesc();
 		
-		//sends Project ID to EventBus
-		boe_tool.eventBus.post(new CLINChangeEvent(clin_id, clin_num, clin_desc));
 		//adds CLIN ID to SharedResources
 		boe_tool.shared.setCLIN(clin_id);
+
+		//sends Project ID to EventBus
+		boe_tool.eventBus.post(new CLINChangeEvent(clin_id, clin_num, clin_desc));
 	}
 	
  	private void noCLINAlert() {

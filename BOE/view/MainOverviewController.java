@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import com.google.common.eventbus.Subscribe;
 import BOE.boe_tool;
 import BOE.events.CLINChangeEvent;
+import BOE.events.ProductChangeEvent;
 import BOE.events.ProjectChangeEvent;
 import BOE.events.Subscriber;
 import BOE.util.db_import;
@@ -26,10 +27,11 @@ public class MainOverviewController implements Subscriber {
 
 	@FXML Label userLabel, prjLabel, clinLabel;
 	@FXML AnchorPane switchPane;
-	@FXML Accordion BOEA, productAccordion;
-	@FXML TitledPane project, product, management, reports;
+	@FXML Accordion BOEA;
+	@FXML VBox productVBox;
+	@FXML TitledPane project, clin, product, management, reports;
 	
-	private ArrayList<TitledPane> list = new ArrayList<TitledPane>();
+	private ArrayList<Label> list = new ArrayList<Label>();
 	
 	@FXML
 	private void initialize() {
@@ -40,23 +42,27 @@ public class MainOverviewController implements Subscriber {
 		userLabel.setText( boe_tool.shared.getUser().getFull_name() );
 		
 		//sets the project pane to be opened on startup
-		BOEA.setExpandedPane(project);
-		setProjectSummary();
+		expandMenu(project);
+		setProjectList();
 	}
 
 	@FXML
 	private void closeBtnControl() {
 		System.exit(1);
 	}
+	
+	public void setProjectList() {
+		switchPaneView("view/projectList.fxml");
+	}
 
 	public void setProjectSummary()  {		
 		switchPaneView("view/projectSummary.fxml");
 	}
-
-	public void setReportSummary() {
-		switchPaneView("view/projectSummary.fxml");
+	
+	public void setCLINSummary() {
+		switchPaneView("view/CLINSummary.fxml");
 	}
-
+	
 	public void setManagement() {
 		switchPaneView("view/managementSummary.fxml");
 	}
@@ -94,8 +100,12 @@ public class MainOverviewController implements Subscriber {
 			result = db.query("SELECT org_id, org_name, detailed_org FROM org WHERE clin_id = " + clin_id);
 
 			while(result.next()) {
+				Label label = new Label(result.getString(2));
 				
-				list.add( new TitledPane( result.getString(2), new VBox() ));
+				list.add( label );
+				
+				//adds the label to the Product VBox
+				productVBox.getChildren().add( label );
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -103,19 +113,16 @@ public class MainOverviewController implements Subscriber {
 			db.db_close();
 		}
 		
-		//adds the list to the Product Accordion Menu
-		for (TitledPane p : list) {
-			productAccordion.getPanes().add(p);
-			
-			//p.getContent();
-		}
-		
 		//clears list
 		list.clear();
 	}
 	
 	private void clearOrgs() {
-		productAccordion.getPanes().clear();
+		productVBox.getChildren().clear();
+	}
+	
+	private void expandMenu(TitledPane p) {
+		BOEA.setExpandedPane(p);
 	}
 	
 	/**
@@ -123,10 +130,12 @@ public class MainOverviewController implements Subscriber {
 	 * @param event requires a ProjectChangeEvent
 	 */
 	@Subscribe
-	public void reloadProject(ProjectChangeEvent event) {
+	public void loadProject(ProjectChangeEvent event) {
 		prjLabel.setText(event.getProject_name());
 		clinLabel.setText("CLIN");
 		clearOrgs();
+		
+		setProjectSummary();
 	}
 	
 	/**
@@ -134,12 +143,21 @@ public class MainOverviewController implements Subscriber {
 	 * @param event requires a CLINChangeEvent
 	 */
 	@Subscribe
-	public void reloadCLIN(CLINChangeEvent event) {
+	public void loadCLIN(CLINChangeEvent event) {
 		int clin_num = event.getClin_num();
 		
 		clinLabel.setText( Integer.toString(clin_num) );
 		
 		clearOrgs();
 		getOrgs(clin_num);
+		expandMenu(clin);
+		setCLINSummary();
+	}
+	
+	@Subscribe
+	public void loadProduct(ProductChangeEvent event) {
+		int product_num = event.getProduct_id();
+		
+		
 	}
 }

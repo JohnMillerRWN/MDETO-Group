@@ -17,9 +17,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="601.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.MainOverviewController">
-  <children>
-    <MenuBar VBox.vgrow="NEVER">
+<AnchorPane prefWidth="760.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.MainOverviewController">
+   <children>
+    <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -58,7 +58,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane dividerPositions="0.1624413145539906" focusTraversable="true" prefHeight="541.0" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.1624413145539906" focusTraversable="true" prefHeight="541.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
       <items>
         <AnchorPane prefHeight="551.0" prefWidth="165.0" SplitPane.resizableWithParent="false">
           <children>
@@ -66,27 +66,33 @@
                     <panes>
                       <TitledPane fx:id="project" animated="false" text="Project">
                            <content>
-                              <VBox prefHeight="18.0" prefWidth="208.0">
+                              <VBox>
                                  <children>
-                                    <Label layoutX="20.0" layoutY="20.0" onMouseClicked="#setProjectSummary" text="Overview" />
-                                    <Label onMouseClicked="#setSDRLs" text="SDRLs" />
-                                    <Label onMouseClicked="#setSOWs" text="SOW Paragraphs" />
-                                    <Label text="..." />
+                                    <Label fx:id="projectList" onMouseClicked="#setProjectList" text="Project List" />
+                                    <Label fx:id="projectOverview" layoutX="20.0" layoutY="20.0" onMouseClicked="#setProjectSummary" text="Project Overview" />
+                                    <Label fx:id="SDRLs" onMouseClicked="#setSDRLs" text="SDRLs" />
+                                    <Label fx:id="SOWParagraphs" onMouseClicked="#setSOWs" text="SOW Paragraphs" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                        <TitledPane fx:id="clin" text="CLIN">
+                           <content>
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="CLINOverview" onMouseClicked="#setCLINSummary" text="CLIN Overview" />
                                  </children>
                               </VBox>
                            </content>
                         </TitledPane>
                         <TitledPane fx:id="product" animated="false" layoutX="10.0" layoutY="10.0" text="Org / Product">
                            <content>
-                              <Accordion fx:id="productAccordion">
-                                 <padding>
-                                    <Insets left="10.0" />
-                                 </padding></Accordion>
+                              <VBox fx:id="productVBox" />
                            </content>
                         </TitledPane>
                       <TitledPane fx:id="management" animated="false" text="Managment View">
                            <content>
-                              <VBox prefHeight="18.0" prefWidth="208.0">
+                              <VBox>
                                  <children>
                                     <Label onMouseClicked="#setManagement" text="Summary" />
                                     <Label layoutX="20.0" layoutY="20.0" text="CLINs" />
@@ -95,7 +101,8 @@
                                     <Label layoutX="20.0" layoutY="71.0" text="..." />
                                  </children>
                               </VBox>
-                           </content></TitledPane>
+                           </content>
+                        </TitledPane>
                         <TitledPane fx:id="reports" animated="false" layoutX="10.0" layoutY="60.0" text="Reports">
                            <content>
                               <VBox prefHeight="18.0" prefWidth="208.0">
@@ -122,14 +129,15 @@
                 <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
                            <font>
                       <Font size="18.0" fx:id="x1" />
-                           </font></Label>
+                           </font>
+                        </Label>
               </children>
             </AnchorPane>
           </content>
         </ScrollPane>
       </items>
     </SplitPane>
-      <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="30.0">
+      <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Label fx:id="userLabel" text="User" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0" />
             <GridPane alignment="CENTER_RIGHT" hgap="10.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
@@ -153,5 +161,5 @@
             </GridPane>
          </children>
       </AnchorPane>
-  </children>
-</VBox>
+   </children>
+</AnchorPane>
