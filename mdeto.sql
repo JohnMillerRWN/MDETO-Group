@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS mdeto;
 CREATE DATABASE mdeto;
 USE mdeto;
 
-CREATE TABLE sys_user (
+CREATE TABLE app_user (
 	user_id INT UNIQUE AUTO_INCREMENT,
     first_name VARCHAR(20),
     mid_name VARCHAR(20),
@@ -14,6 +14,18 @@ CREATE TABLE sys_user (
     PRIMARY KEY (user_id)
 );
 
+DELIMITER $$
+CREATE TRIGGER before_insert_user
+BEFORE INSERT ON app_user
+FOR EACH ROW
+	IF new.project_manager && new.estimator
+    THEN
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User cannot be both Project Manager and Estimator';
+	END IF;
+$$
+DELIMITER ;
+
+
 CREATE TABLE project (
     project_id INT UNIQUE AUTO_INCREMENT,
     project_name VARCHAR(255) NOT NULL,
@@ -23,8 +35,9 @@ CREATE TABLE project (
     pop INT GENERATED ALWAYS AS ( datediff(end_date, start_date) ),	# period of performance in days
     project_manager INT,
     short_desc TEXT,
+    mse_wbs VARCHAR(4) DEFAULT '1',
     PRIMARY KEY (project_id),
-    FOREIGN KEY (project_manager) REFERENCES sys_user(user_id)
+    FOREIGN KEY (project_manager) REFERENCES app_user(user_id)
 );
 
 CREATE TABLE clin (
@@ -37,9 +50,26 @@ CREATE TABLE clin (
     project_id INT,
     project_type VARCHAR(20),
     short_desc TEXT,
+    mse_wbs VARCHAR(8),
     PRIMARY KEY (clin_id),
     FOREIGN KEY (project_id) REFERENCES project(project_id)
 );
+
+DELIMITER $$
+CREATE TRIGGER before_insert_clin
+BEFORE INSERT ON clin
+FOR EACH ROW 
+BEGIN
+	DECLARE project_num INT;
+	SELECT count(*) FROM project WHERE project_id = new.project_id INTO project_num;
+	
+    IF project_num <= 0 THEN
+		SET NEW.mse_wbs = '1.1';
+	ELSEIF project_num > 1 THEN
+		SET NEW.mse_wbs = '1.2';
+	END IF;
+END; $$
+DELIMITER ;
 
 CREATE TABLE org (
 	org_id INT UNIQUE AUTO_INCREMENT,
@@ -47,6 +77,7 @@ CREATE TABLE org (
     created_date DATETIME DEFAULT CURRENT_TIMESTAMP,				# datetime format is YYYY-MM-DD HH:MM:SS
     clin_id INT,
     detailed_org TEXT,
+    mse_wbs VARCHAR(16),
     PRIMARY KEY (org_id),
     FOREIGN KEY (clin_id) REFERENCES clin(clin_id)
 );
@@ -60,14 +91,14 @@ CREATE TABLE wrk_pkg (
     pop INT GENERATED ALWAYS AS ( datediff(end_date, start_date) ),	# period of performance in days
 	org_id INT,
     detailed_desc TEXT,
-    mse_wbs VARCHAR(10),
-	cust_wbs VARCHAR(10),
+    mse_wbs VARCHAR(32),
+	cust_wbs VARCHAR(32),
     author INT,
     version DOUBLE,
     scope VARCHAR(40),
     PRIMARY KEY (wrk_pkg_id),
     FOREIGN KEY (org_id) REFERENCES org(org_id),
-    FOREIGN KEY (author) REFERENCES sys_user(user_id)
+    FOREIGN KEY (author) REFERENCES app_user(user_id)
 );
 
 CREATE TABLE task (
@@ -79,7 +110,8 @@ CREATE TABLE task (
     pop INT GENERATED ALWAYS AS ( datediff(end_date, start_date) ),	# period of performance in days
     boe_formula TEXT,
     emr TEXT, 
-    staff_hours DOUBLE
+    staff_hours DOUBLE,
+    mse_wbs VARCHAR(64)
 );
 
 CREATE VIEW project_view AS 
@@ -95,7 +127,7 @@ CREATE VIEW project_view AS
 	FROM 
 		project p
 	JOIN 
-		sys_user u ON 
+		app_user u ON 
 		u.user_id = p.project_manager;
 
 CREATE VIEW wrk_pkg_view AS
@@ -120,16 +152,16 @@ CREATE VIEW wrk_pkg_view AS
 		FROM 
 			wrk_pkg p
 		JOIN 
-			sys_user u ON 
+			app_user u ON 
 			u.user_id = p.author
 	) w
 	JOIN org o ON o.org_id = w.org_id;
 
-INSERT INTO sys_user ( first_name, last_name, active, project_manager )
+INSERT INTO app_user ( first_name, last_name, active, project_manager )
    VALUES ('Project', 'Manager', true, true );
-INSERT INTO sys_user ( first_name, last_name, active, estimator )
+INSERT INTO app_user ( first_name, last_name, active, estimator )
    VALUES ( 'Estimator', '', true, true );
-INSERT INTO sys_user ( first_name, last_name, active, project_manager )
+INSERT INTO app_user ( first_name, last_name, active, project_manager )
    VALUES ( 'Test', 'Project Manager', true, true );
 
 INSERT INTO project ( project_name, start_date, end_date, project_manager, short_desc )
