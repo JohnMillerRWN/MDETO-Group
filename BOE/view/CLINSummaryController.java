@@ -49,7 +49,7 @@ public class CLINSummaryController {
 		//loads current project if there is any
 		if (curr_clin>0) {
 			setCLIN(curr_clin);
-		} else 
+		} 
 
 		productListDoubleClick();
 	}
@@ -59,9 +59,10 @@ public class CLINSummaryController {
 		db.db_open();
 
 		try {
-			result = db.query("SELECT * FROM clin WHERE project_id = " + id);
+			result = db.query("SELECT * FROM clin WHERE clin_id = " + id);
 
-			while(result.next()) {
+			result.next(); 
+			{
 				clinNumber.setText(result.getString(2));
 				
 				startDate.setValue( LocalDate.parse(result.getString(3), dateformatter) );
@@ -70,6 +71,9 @@ public class CLINSummaryController {
 				
 				clinDesc.setText(result.getString(9));
 				clinDesc.setWrapText(true);
+				
+				System.out.println("Clin loader " + id);
+				System.out.println("database " + result.getString(2));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

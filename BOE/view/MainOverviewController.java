@@ -150,6 +150,7 @@ public class MainOverviewController implements Subscriber {
 		clearOrgs();
 		
 		setProjectSummary();
+		System.out.println(event.getProject_id());
 	}
 	
 	/**
@@ -161,6 +162,8 @@ public class MainOverviewController implements Subscriber {
 		int clin_num = event.getClin_num();
 		
 		clinLabel.setText( Integer.toString(clin_num) );
+		System.out.println(clin_num);
+		boe_tool.shared.setCLIN(clin_num);
 		
 		clearOrgs();
 		getOrgs(clin_num);
@@ -171,7 +174,7 @@ public class MainOverviewController implements Subscriber {
 	@Subscribe
 	public void loadProduct(ProductChangeEvent event) {
 		int product_num = event.getProduct_id();
-		
+		System.out.println(product_num);
 		
 	}
 }

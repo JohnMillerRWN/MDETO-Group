@@ -68,7 +68,8 @@ public class ProjectSummaryController implements Subscriber {
 		try {
 			result = db.query("SELECT * FROM project_view where project_id = " + id);
 
-			while(result.next()) {
+			result.next();
+			{
 				prjName.setText(result.getString(2));
 				prjManager.setText(result.getString(7));
 				startDate.setValue( LocalDate.parse(result.getString(3), dateformatter) );

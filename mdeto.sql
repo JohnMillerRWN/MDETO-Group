@@ -178,19 +178,19 @@ INSERT INTO project ( project_name, start_date, end_date, project_manager, short
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
 	VALUES( 1, '2013-05-01', '2020-05-11', 1, 'Contract Line Item (CLIN) 1');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
-	VALUES( 2, '2011-08-11', '2020-05-16', 2, 'Contract Line Item (CLIN) 2');
+	VALUES( 2, '2011-08-11', '2020-05-16', 1, 'Contract Line Item (CLIN) 2');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
 	VALUES( 3, '2020-05-16', '2023-05-16', 2, 'Contract Line Item (CLIN) 3');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
-	VALUES( 4, '2020-05-16', '2023-05-16', 3, 'Contract Line Item (CLIN) 4');
+	VALUES( 4, '2020-05-16', '2023-05-16', 2, 'Contract Line Item (CLIN) 4');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
-	VALUES( 5, '2020-05-16', '2023-05-16', 4, 'Contract Line Item (CLIN) 5');
+	VALUES( 5, '2020-05-16', '2023-05-16', 3, 'Contract Line Item (CLIN) 5');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
-	VALUES( 6, '2020-05-16', '2023-05-16', 4, 'Contract Line Item (CLIN) 6');
+	VALUES( 6, '2020-05-16', '2023-05-16', 3, 'Contract Line Item (CLIN) 6');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
-	VALUES( 7, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 7');
+	VALUES( 7, '2020-05-16', '2023-05-16', 4, 'Contract Line Item (CLIN) 7');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
-	VALUES( 8, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 8');
+	VALUES( 8, '2020-05-16', '2023-05-16', 4, 'Contract Line Item (CLIN) 8');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
 	VALUES( 9, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 9');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
