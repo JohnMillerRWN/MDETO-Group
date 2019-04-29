@@ -195,72 +195,72 @@ INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
 	VALUES( 9, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 9');
 INSERT INTO clin ( clin_num, start_date, end_date, project_id, short_desc )
 	VALUES( 10, '2020-05-16', '2023-05-16', 5, 'Contract Line Item (CLIN) 10');
-
+    
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Radar', 1, 'Radar for CLIN 1');
+	VALUES( 'Communication', 1, 'Communication system for CLIN 1');    
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 1, 'DM for CLIN 1');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Communication', 1, 'Communication system for CLIN 1');
-INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DSP', 1, 'Defense Support Program for CLIN 1');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 1, 'Radar for CLIN 1');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 2, 'DM for CLIN 2');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'ESSM', 2, 'Evolved Seasparrow Missile for CLIN 2');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'Radar', 2, 'Radar for CLIN 2');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'DM', 2, 'DM for CLIN 2');
+	VALUES( 'DM', 3, 'DM for CLIN 3');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'Radar', 3, 'Radar for CLIN 3');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'STSS', 3, 'Space Tracking and Surveillance System for CLIN 3');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'DM', 3, 'DM for CLIN 3');
-INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Radar', 4, 'Radar for CLIN 4');
+	VALUES( 'C2BMC', 4, 'Command and Control, Battle Management, and Communications for CLIN 4');    
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 4, 'DM for CLIN 4');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'C2BMC', 4, 'Command and Control, Battle Management, and Communications for CLIN 4');
-INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Radar', 5, 'Radar for CLIN 5');
+	VALUES( 'Radar', 4, 'Radar for CLIN 4');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 5, 'DM for CLIN 5');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'STSS', 5, 'Space Tracking and Surveillance System for CLIN 5');
-INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'ESSM', 5, 'Evolved Seasparrow Missile for CLIN 5');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Radar', 6, 'Radar for CLIN 6');
+	VALUES( 'Radar', 5, 'Radar for CLIN 5');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'STSS', 5, 'Space Tracking and Surveillance System for CLIN 5');    
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 6, 'DM for CLIN 6');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Radar', 7, 'Radar for CLIN 7');
+	VALUES( 'Radar', 6, 'Radar for CLIN 6');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'Communication', 7, 'Communication system for CLIN 7');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 7, 'DM for CLIN 7');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Radar', 8, 'Radar for CLIN 8');
+	VALUES( 'Radar', 7, 'Radar for CLIN 7');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Communication', 8, 'Communication system for CLIN 8');
+	VALUES( 'Communication', 8, 'Communication system for CLIN 8');    
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 8, 'DM for CLIN 8');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'STSS', 8, 'Space Tracking and Surveillance System for CLIN 8');
+	VALUES( 'Radar', 8, 'Radar for CLIN 8');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Radar', 9, 'Radar for CLIN 9');
+	VALUES( 'STSS', 8, 'Space Tracking and Surveillance System for CLIN 8');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 9, 'DM for CLIN 9');
 INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Radar', 9, 'Radar for CLIN 9');
+INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'C2BMC', 10, 'Command and Control, Battle Management, and Communications for CLIN 10');
 INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Communication', 10, 'Communication system for CLIN 19');    
+ INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'DM', 10, 'DM for CLIN 10');   
+INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'Radar', 10, 'Radar for CLIN 10');
-INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'DM', 10, 'DM for CLIN 10');
-INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Communication', 10, 'Communication system for CLIN 19');
-    
+
 
 INSERT INTO wrk_pkg ( wrk_pkg_name, start_date, end_date, org_id, detailed_desc, mse_wbs, cust_wbs, author, scope )
 	VALUES ( 'test package', '2020-05-16', '2023-05-16', 1, 'detailed description', 1.2, 1.2, 1, 'out of scope' );
