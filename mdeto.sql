@@ -231,6 +231,8 @@ INSERT INTO org ( org_name, clin_id, detailed_org )
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'STSS', 5, 'Space Tracking and Surveillance System for CLIN 5');    
 INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'C2BMC', 6, 'Command and Control, Battle Management, and Communications for CLIN 6'); 
+INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 6, 'DM for CLIN 6');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'Radar', 6, 'Radar for CLIN 6');
@@ -248,6 +250,8 @@ INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'Radar', 8, 'Radar for CLIN 8');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'STSS', 8, 'Space Tracking and Surveillance System for CLIN 8');
+INSERT INTO org ( org_name, clin_id, detailed_org )
+	VALUES( 'Communication', 9, 'Communication system for CLIN 9');
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 9, 'DM for CLIN 9');
 INSERT INTO org ( org_name, clin_id, detailed_org )
