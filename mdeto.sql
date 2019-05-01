@@ -138,6 +138,7 @@ CREATE VIEW wrk_pkg_view AS
 		w.end_date,
 		CAST(w.created_date AS DATE) AS 'created_date',
 		w.pop,
+        o.org_id,
 		o.org_name,
 		w.detailed_desc,
 		w.mse_wbs,
@@ -259,7 +260,7 @@ INSERT INTO org ( org_name, clin_id, detailed_org )
 INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'C2BMC', 10, 'Command and Control, Battle Management, and Communications for CLIN 10');
 INSERT INTO org ( org_name, clin_id, detailed_org )
-	VALUES( 'Communication', 10, 'Communication system for CLIN 19');    
+	VALUES( 'Communication', 10, 'Communication system for CLIN 10');    
  INSERT INTO org ( org_name, clin_id, detailed_org )
 	VALUES( 'DM', 10, 'DM for CLIN 10');   
 INSERT INTO org ( org_name, clin_id, detailed_org )

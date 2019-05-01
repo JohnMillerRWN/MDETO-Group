@@ -95,8 +95,8 @@ public class ProductSummaryController {
 			result = db.query("SELECT * FROM wrk_pkg_view WHERE org_id = " + curr_product);
 
 			while(result.next()) {
-				list.add( new WRK_PKG_Table( result.getInt(1), result.getString(2), result.getString(9), result.getString(3), result.getString(4), 
-						result.getString(12), result.getString(14)) );
+				list.add( new WRK_PKG_Table( result.getInt(1), result.getString(2), result.getString(8), result.getString(3), result.getString(4), 
+						result.getString(11), result.getString(13)) );
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
