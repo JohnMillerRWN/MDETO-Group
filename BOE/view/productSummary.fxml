@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.ProductSummaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BOE.view.ProductSummaryController">
    <children>
       <GridPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -24,38 +23,43 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="productName" text="Product">
+            <Label text="Product" textFill="GREY">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label fx:id="summary" alignment="CENTER" text="Summary" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Label alignment="CENTER" text="Summary" textFill="GREY" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label fx:id="productID" text="ID" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+            <Label text="ID" textFill="GREY" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
+            <Label fx:id="productName" text="Product Name" GridPane.rowIndex="1" />
+            <Label fx:id="productSummary" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Product Summary" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+            <Label fx:id="productID" text="Product ID" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
          </children>
          <padding>
             <Insets left="22.0" right="22.0" top="14.0" />
          </padding>
       </GridPane>
-      <TableView layoutX="-3.0" layoutY="53.0" prefHeight="250.0" prefWidth="629.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
+      <TableView fx:id="wrkTable" layoutX="-3.0" layoutY="53.0" prefHeight="265.0" prefWidth="562.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="85.0">
         <columns>
-          <TableColumn fx:id="wbsCol" prefWidth="138.0" text="WBS" />
-            <TableColumn fx:id="taskCol" prefWidth="208.0" text="Task" />
-          <TableColumn fx:id="typeCol" prefWidth="75.0" text="Task Type" />
-            <TableColumn fx:id="hoursCol" prefWidth="86.0" text="Staff Hours" />
-            <TableColumn fx:id="monthsCol" prefWidth="121.0" text="Staff Months" />
+          <TableColumn fx:id="wrk_pkg_nameCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="95.0" text="Work Package" />
+          <TableColumn fx:id="wrk_pkg_descCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="150.0" text="Description" />
+            <TableColumn fx:id="wrk_pkg_sDateCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="70.0" text="Start Date" />
+            <TableColumn fx:id="wrk_pkg_eDateCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="70.0" text="End Date" />
+            <TableColumn fx:id="wrk_pkg_authorCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="90.0" text="Author" />
+            <TableColumn fx:id="wrk_pkg_scopeCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="84.0" text="Scope" />
         </columns>
       </TableView>
-      <GridPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="330.0">
+      <GridPane vgap="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="365.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -65,19 +69,18 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Add new WBS Tempate" />
-            <ComboBox prefWidth="150.0" promptText="WBS Template" GridPane.columnIndex="1" />
             <ButtonBar GridPane.columnIndex="2">
                <buttons>
                   <Button fx:id="addWBS" mnemonicParsing="false" text="Add WBS" />
                   <Button fx:id="loadWBS" mnemonicParsing="false" text="Load WBS" />
                </buttons>
             </ButtonBar>
+            <Label text="Add new WBS Tempate" />
+            <ComboBox prefWidth="150.0" promptText="WBS Template" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
          </children>
          <padding>
             <Insets left="22.0" right="22.0" />
          </padding>
       </GridPane>
-      <PieChart layoutX="57.0" layoutY="310.0" legendSide="LEFT" prefHeight="343.0" prefWidth="499.0" />
    </children>
 </AnchorPane>

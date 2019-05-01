@@ -12,7 +12,6 @@ import BOE.events.ProductChangeEvent;
 import BOE.events.ProjectChangeEvent;
 import BOE.events.Subscriber;
 import BOE.util.db_import;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -64,6 +63,10 @@ public class MainOverviewController implements Subscriber {
 		switchPaneView("view/CLINSummary.fxml");
 	}
 	
+	public void setProductSummary() {
+		switchPaneView("view/productSummary.fxml");
+	}
+	
 	public void setManagement() {
 		switchPaneView("view/managementSummary.fxml");
 	}
@@ -109,7 +112,7 @@ public class MainOverviewController implements Subscriber {
 				product_name.setOnMouseClicked(event -> {
 			        if (event.getClickCount() == 1) {
 			        	boe_tool.shared.setProduct(product_id);
-			        	System.out.println(product_id);
+			        	setProductSummary();
 			        }
 				});
 
@@ -143,14 +146,12 @@ public class MainOverviewController implements Subscriber {
 		prjLabel.setText(event.getProject_name());
 		clinLabel.setText("CLIN");
 		
-		
 		boe_tool.shared.setCLIN(-1);
 		boe_tool.shared.setProduct(-1);
 		
 		clearOrgs();
 		
 		setProjectSummary();
-		System.out.println(event.getProject_id());
 	}
 	
 	/**
@@ -162,7 +163,6 @@ public class MainOverviewController implements Subscriber {
 		int clin_num = event.getClin_num();
 		
 		clinLabel.setText( Integer.toString(clin_num) );
-		System.out.println(clin_num);
 		boe_tool.shared.setCLIN(clin_num);
 		
 		clearOrgs();
@@ -174,7 +174,9 @@ public class MainOverviewController implements Subscriber {
 	@Subscribe
 	public void loadProduct(ProductChangeEvent event) {
 		int product_num = event.getProduct_id();
-		System.out.println(product_num);
 		
+		boe_tool.shared.setProduct(product_num);
+		expandMenu(product);
+		setProductSummary();
 	}
 }

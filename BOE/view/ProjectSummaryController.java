@@ -25,7 +25,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 public class ProjectSummaryController implements Subscriber {
 
@@ -69,15 +68,16 @@ public class ProjectSummaryController implements Subscriber {
 			result = db.query("SELECT * FROM project_view where project_id = " + id);
 
 			result.next();
-			{
-				prjName.setText(result.getString(2));
-				prjManager.setText(result.getString(7));
-				startDate.setValue( LocalDate.parse(result.getString(3), dateformatter) );
-				endDate.setValue( LocalDate.parse(result.getString(4), dateformatter) );
-				pop.setText( "PoP: " + Integer.toString( result.getInt(6) ) + 'd' );
-				prjDesc.setText(result.getString(8));
-				prjDesc.setWrapText(true);
-			}
+			prjName.setText(result.getString(2));
+			prjManager.setText(result.getString(7));
+			
+			startDate.setValue( LocalDate.parse(result.getString(3), dateformatter) );
+			endDate.setValue( LocalDate.parse(result.getString(4), dateformatter) );
+			
+			pop.setText( "PoP: " + Integer.toString( result.getInt(6) ) + 'd' );
+			prjDesc.setText(result.getString(8));
+			prjDesc.setWrapText(true);
+			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
