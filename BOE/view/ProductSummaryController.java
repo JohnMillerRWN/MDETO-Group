@@ -26,12 +26,12 @@ public class ProductSummaryController {
 	private ObservableList<WRK_PKG_Table> data = FXCollections.observableArrayList();
 
 	@FXML private TableView<WRK_PKG_Table> wrkTable;
-	@FXML private TableColumn<WRK_PKG_Table, String> wrk_pkg_nameCol;
-	@FXML private TableColumn<WRK_PKG_Table, String> wrk_pkg_descCol;
-	@FXML private TableColumn<WRK_PKG_Table, String> wrk_pkg_sDateCol;
-	@FXML private TableColumn<WRK_PKG_Table, String> wrk_pkg_eDateCol;
-	@FXML private TableColumn<WRK_PKG_Table, String> wrk_pkg_authorCol;
-	@FXML private TableColumn<WRK_PKG_Table, String> wrk_pkg_scopeCol;
+	@FXML private TableColumn<WRK_PKG_Table, String> nameCol;
+	@FXML private TableColumn<WRK_PKG_Table, String> descCol;
+	@FXML private TableColumn<WRK_PKG_Table, String> sDateCol;
+	@FXML private TableColumn<WRK_PKG_Table, String> eDateCol;
+	@FXML private TableColumn<WRK_PKG_Table, String> authorCol;
+	@FXML private TableColumn<WRK_PKG_Table, String> scopeCol;
 	
 	public void initialize() {
 		//loads current product if there is any
@@ -74,13 +74,14 @@ public class ProductSummaryController {
 	}
 	
 	private void loadWRK_PKGTable() {
-		wrk_pkg_nameCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("name"));
-		wrk_pkg_descCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("desc"));
-		wrk_pkg_sDateCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("sDate"));
-		wrk_pkg_eDateCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("eDate"));
-		wrk_pkg_authorCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("author"));
-		wrk_pkg_scopeCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("scope"));
+		nameCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("name"));
+		descCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("desc"));
 		
+		sDateCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("startDate"));
+		eDateCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("endDate"));
+		
+		authorCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("author"));
+		scopeCol.setCellValueFactory(new PropertyValueFactory<WRK_PKG_Table, String>("scope"));
 		
 		data = FXCollections.observableArrayList( parseWRK_PKGList() );
 		
@@ -95,9 +96,8 @@ public class ProductSummaryController {
 			result = db.query("SELECT * FROM wrk_pkg_view WHERE org_id = " + curr_product);
 
 			while(result.next()) {
-				list.add( new WRK_PKG_Table( result.getInt(1), result.getString(2), result.getString(9), result.getDate(3).toString(), result.getDate(4).toString(), 
+				list.add( new WRK_PKG_Table( result.getInt(1), result.getString(2), result.getString(9), result.getString(3), result.getString(4), 
 						result.getString(12), result.getString(14)) );
-				System.out.println(list.get(0).geteDate());
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -109,14 +109,14 @@ public class ProductSummaryController {
 	
 	public class WRK_PKG_Table {
 		private Integer id;
-		private String name, desc, sDate, eDate, author, scope;
+		private String name, desc, startDate, endDate, author, scope;
 		
-		public WRK_PKG_Table(Integer id, String name, String desc, String sDate, String eDate, String author, String scope) {
+		public WRK_PKG_Table(Integer id, String name, String desc, String startDate, String endDate, String author, String scope) {
 			this.id = id;
 			this.name = name;
 			this.desc = desc;
-			this.sDate = sDate;
-			this.eDate = eDate;
+			this.startDate = startDate;
+			this.endDate = endDate;
 			this.author = author;
 			this.scope = scope;
 		}
@@ -145,20 +145,20 @@ public class ProductSummaryController {
 			this.desc = desc;
 		}
 
-		public String getsDate() {
-			return sDate;
+		public String getStartDate() {
+			return startDate;
 		}
 
-		public void setsDate(String sDate) {
-			this.sDate = sDate;
+		public void setStartDate(String startDate) {
+			this.startDate = startDate;
 		}
 
-		public String geteDate() {
-			return eDate;
+		public String getEndDate() {
+			return endDate;
 		}
 
-		public void seteDate(String eDate) {
-			this.eDate = eDate;
+		public void setEndDate(String endDate) {
+			this.endDate = endDate;
 		}
 
 		public String getAuthor() {

@@ -51,12 +51,12 @@
       </GridPane>
       <TableView fx:id="wrkTable" layoutX="-3.0" layoutY="53.0" prefHeight="265.0" prefWidth="562.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="85.0">
         <columns>
-          <TableColumn fx:id="wrk_pkg_nameCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="95.0" text="Work Package" />
-          <TableColumn fx:id="wrk_pkg_descCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="150.0" text="Description" />
-            <TableColumn fx:id="wrk_pkg_sDateCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="70.0" text="Start Date" />
-            <TableColumn fx:id="wrk_pkg_eDateCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="70.0" text="End Date" />
-            <TableColumn fx:id="wrk_pkg_authorCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="90.0" text="Author" />
-            <TableColumn fx:id="wrk_pkg_scopeCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="84.0" text="Scope" />
+          <TableColumn fx:id="nameCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="95.0" text="Work Package" />
+          <TableColumn fx:id="descCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="150.0" text="Description" />
+            <TableColumn fx:id="sDateCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="70.0" text="Start Date" />
+            <TableColumn fx:id="eDateCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="70.0" text="End Date" />
+            <TableColumn fx:id="authorCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="90.0" text="Author" />
+            <TableColumn fx:id="scopeCol" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="84.0" text="Scope" />
         </columns>
       </TableView>
       <GridPane vgap="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="365.0">
