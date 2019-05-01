@@ -34,14 +34,10 @@ public class CLINSummaryController {
 	@FXML private TableColumn<ProductTable, String> productName;
 	@FXML private TableColumn<ProductTable, String> productDetails;
 
-	//@FXML private TextField clinNumber;
-	//@FXML private TextArea clinDesc;
 	@FXML private Label clinNumber, clinDesc, startDate, endDate, pop;
-	//@FXML private DatePicker startDate, endDate;
 
 	public void initialize() {
-		//clearProductTable();
-		//loads current project if there is any
+		//loads current clin if there is any
 		if (curr_clin>0) {
 			setCLIN(curr_clin);
 		} 

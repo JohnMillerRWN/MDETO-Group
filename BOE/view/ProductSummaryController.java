@@ -34,7 +34,7 @@ public class ProductSummaryController {
 	@FXML private TableColumn<WRK_PKG_Table, String> wrk_pkg_scopeCol;
 	
 	public void initialize() {
-		//loads current project if there is any
+		//loads current product if there is any
 		if (curr_product>0) {
 			setProduct(curr_product);
 		} 
